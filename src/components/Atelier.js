@@ -75,8 +75,8 @@ const Atelier = () => {
 
       <AtelierSection title={'Notre écosystème'} bgColor="#5aff6e">
         <p>
-        L’atelier Rusch fonctionne en collaboration avec un éventail de savoir-faire, y compris techniques et industriels. Dans cette idée, nous avons installés notre bureau au sein d’ICIMontreuil, un atelier solidaire où se cotoient quotidiennement des artisans et makers de différents milieux.<br/>
-        Ainsi, nous avons accès à un parc de machine qui nous permettent de facilement prototyper nos projet pour expérimenter nos avancées échelle 1, de développer des outils de facilitations ou des scénographies, ou d’engager nos chantier participatif sur des points techniques difficilement abordables pour un grand public. De plus, nous tissons des partenariats avec les entreprises que nous y croisons quotidiennements, qu’elles soient artisanales ou industriels.
+        L’Atelier Rusch fonctionne en collaboration avec un éventail de savoir-faire, y compris techniques et industriels. Dans cette idée, nous avons installés notre bureau au sein d’ICIMontreuil, un atelier solidaire où se cotoient quotidiennement des artisans et makers de différents milieux.<br/>
+        Ainsi, nous avons accès à un parc de machine qui nous permet de facilement prototyper nos projets pour expérimenter nos avancées échelle 1, de développer des outils de facilitations ou des scénographies, ou d’engager nos chantiers participatifs sur des points techniques difficilement abordables pour un grand public. De plus, nous tissons des partenariats avec les entreprises que nous croisons quotidiennement, qu’elles soient artisanales ou industrielles.
         </p>
       </AtelierSection>
 
