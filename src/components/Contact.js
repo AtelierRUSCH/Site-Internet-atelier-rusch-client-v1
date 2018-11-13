@@ -24,7 +24,8 @@ const Contact = () =>
         </div>
         <div>
           <h4>Contacts</h4>
-          bonjour@atelier-rusch.com<br/>
+          
+          <a href='mailto:bonjour@atelier-rusch.com'>bonjour@atelier-rusch.com</a><br/>
           Marie : +33 6 69 17 12 83<br/>
           Michael : +33 6 83 09 86 16<br/>
           <div className='reseaux'>
