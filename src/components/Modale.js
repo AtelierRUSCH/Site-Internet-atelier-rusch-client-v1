@@ -38,6 +38,7 @@ const Modale = ({ article }) => {
   const getSection = parentContextPath.slice(1, parentContextPath.length)
 
   const articleThumbnails = articles
+    .filter(article => article.isDraft === '0')
     .filter(article => article.hasStar === '0')
     .filter(article => article.section === getSection)
     .slice(0, 2)
