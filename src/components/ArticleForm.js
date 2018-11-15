@@ -5,9 +5,18 @@ import './css/ArticleForm.css'
 import { navigate } from '@reach/router'
 import store from '../store.js'
 
+const formatDate = () => {
+  const today = new Date(Date.now())
+  const day = today.getDate()
+  const month = today.getMonth() + 1
+  const year = today.getFullYear()
+
+  return `${year}-${month}-${day}`
+}
+
 const freshArticle = {
   title: '',
-  date: undefined,
+  date: formatDate(),
   client: '',
   place: '',
   type: '',
