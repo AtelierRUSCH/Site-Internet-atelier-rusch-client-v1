@@ -6,8 +6,8 @@
 }
 
 .PartenaireContainer {
-  width: 20vw;
-  height: 20vw;
+  width: 22vw;
+  height: 22vw;
   box-shadow: -10px 10px 50px rgba(0, 0, 0, 0.075);
   display: flex;
   align-items: center;
@@ -22,9 +22,12 @@
   line-height: 1.2rem;
 }
 
-img.LogoPartenaire {
-  min-width: 13vw;
-  max-width: 13vw;
+div.LogoPartenaire {
+  width: 13vw;
+  height: 7.5vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   margin-top: 2.5rem;
   padding: 0;
 }

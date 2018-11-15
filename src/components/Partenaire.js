@@ -3,7 +3,7 @@ import './css/Partenaire.css'
 
 const Partenaire = ({ partner }) =>
   <div className="PartenaireContainer">
-    <img src={partner.image} className="LogoPartenaire" alt='' />
+    <div style={{ backgroundImage: `url(${partner.image})` }} className="LogoPartenaire" />
     <h6>{partner.shortDescription}</h6>
   </div>
 
