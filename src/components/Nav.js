@@ -20,7 +20,7 @@ const Nav = ({onPageChange}) =>
         window.scrollTo(0, 0)
         window.history.go(0)
         console.log('okokok')
-      }} className={window.location.pathname === '/projets' ? 'NavBarLink active' : 'NavBarLink'} to='/projets'>Projets</Link>
+      }} className={window.location.pathname === '/projets' ? 'NavBarLink active' : 'NavBarLink'} to='/projets'>Projects</Link>
       <Link onClick={() => {
         window.scrollTo(0, 0)
         window.history.go(0)
