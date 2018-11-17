@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from '@reach/router'
 import './css/Nav.css'
 import Logo from './img/logo-rusch-noir.png'
+import { loadArticles } from '../actions'
+import store from '../store'
 
 const Nav = ({onPageChange}) =>
   <div className="NavBar">
@@ -16,8 +18,19 @@ const Nav = ({onPageChange}) =>
 
     <div className="NavBarLinksContainer">
       <Link onClick={() => window.scrollTo(0, 0)} className={window.location.pathname === '/atelier' ? 'NavBarLink active' : 'NavBarLink'} to='/atelier'>Atelier</Link>
+<<<<<<< HEAD
       <Link onClick={() => { window.scrollTo(0, 0) }} className={window.location.pathname === '/projets' ? 'NavBarLink active' : 'NavBarLink'} to='/projets'>Projets</Link>
       <Link onClick={() => { window.scrollTo(0, 0) }} className={window.location.pathname === '/lab' ? 'NavBarLink active' : 'NavBarLink'} to='/lab'>LabRusch</Link>
+=======
+      <Link onClick={() => {
+        store.dispatch(loadArticles(this.state.articles))
+        window.scrollTo(0, 0)
+      }} className={window.location.pathname === '/projets' ? 'NavBarLink active' : 'NavBarLink'} to='/projets'>Projets</Link>
+      <Link onClick={() => {
+        store.dispatch(loadArticles(this.state.articles))
+        window.scrollTo(0, 0)
+      }} className={window.location.pathname === '/lab' ? 'NavBarLink active' : 'NavBarLink'} to='/lab'>LabRusch</Link>
+>>>>>>> a78513ec55215005a88b4f8cb756a2b235e0f106
       <Link onClick={() => window.scrollTo(0, 0)} className={window.location.pathname === '/contact' ? 'NavBarLink active' : 'NavBarLink'} to='/contact'>Contact</Link>
     </div>
 
