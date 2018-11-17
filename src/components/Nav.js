@@ -18,11 +18,13 @@ const Nav = ({onPageChange}) =>
       <Link onClick={() => window.scrollTo(0, 0)} className={window.location.pathname === '/atelier' ? 'NavBarLink active' : 'NavBarLink'} to='/atelier'>Atelier</Link>
       <Link onClick={() => {
         window.scrollTo(0, 0)
-        window.location.reload()
+        window.history.go(0)
+        console.log('okokok')
       }} className={window.location.pathname === '/projets' ? 'NavBarLink active' : 'NavBarLink'} to='/projets'>Projets</Link>
       <Link onClick={() => {
         window.scrollTo(0, 0)
-        window.location.reload()
+        window.history.go(0)
+        console.log('okokok')
       }} className={window.location.pathname === '/lab' ? 'NavBarLink active' : 'NavBarLink'} to='/lab'>LabRusch</Link>
       <Link onClick={() => window.scrollTo(0, 0)} className={window.location.pathname === '/contact' ? 'NavBarLink active' : 'NavBarLink'} to='/contact'>Contact</Link>
     </div>
