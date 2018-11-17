@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from '@reach/router'
 import './css/Nav.css'
 import Logo from './img/logo-rusch-noir.png'
+import { Router } from '@reach/router'
 
 const Nav = ({onPageChange}) =>
   <div className="NavBar">
@@ -18,11 +19,11 @@ const Nav = ({onPageChange}) =>
       <Link onClick={() => window.scrollTo(0, 0)} className={window.location.pathname === '/atelier' ? 'NavBarLink active' : 'NavBarLink'} to='/atelier'>Atelier</Link>
       <Link onClick={() => {
         window.scrollTo(0, 0)
-        window.location.reload()
+        Router.refesh()
       }} className={window.location.pathname === '/projets' ? 'NavBarLink active' : 'NavBarLink'} to='/projets'>Projets</Link>
       <Link onClick={() => {
         window.scrollTo(0, 0)
-        window.location.reload()
+        Router.refesh()
       }} className={window.location.pathname === '/lab' ? 'NavBarLink active' : 'NavBarLink'} to='/lab'>LabRusch</Link>
       <Link onClick={() => window.scrollTo(0, 0)} className={window.location.pathname === '/contact' ? 'NavBarLink active' : 'NavBarLink'} to='/contact'>Contact</Link>
     </div>
