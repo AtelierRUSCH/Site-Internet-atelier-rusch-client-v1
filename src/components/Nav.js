@@ -18,10 +18,6 @@ const Nav = ({onPageChange}) =>
 
     <div className="NavBarLinksContainer">
       <Link onClick={() => window.scrollTo(0, 0)} className={window.location.pathname === '/atelier' ? 'NavBarLink active' : 'NavBarLink'} to='/atelier'>Atelier</Link>
-<<<<<<< HEAD
-      <Link onClick={() => { window.scrollTo(0, 0) }} className={window.location.pathname === '/projets' ? 'NavBarLink active' : 'NavBarLink'} to='/projets'>Projets</Link>
-      <Link onClick={() => { window.scrollTo(0, 0) }} className={window.location.pathname === '/lab' ? 'NavBarLink active' : 'NavBarLink'} to='/lab'>LabRusch</Link>
-=======
       <Link onClick={() => {
         window.scrollTo(0, 0)
         window.history.go(0)
@@ -32,7 +28,6 @@ const Nav = ({onPageChange}) =>
         window.history.go(0)
         console.log('okokok')
       }} className={window.location.pathname === '/lab' ? 'NavBarLink active' : 'NavBarLink'} to='/lab'>LabRusch</Link>
->>>>>>> 7cfab63c486297f6a1e6f4c320e43f073e965fd5
       <Link onClick={() => window.scrollTo(0, 0)} className={window.location.pathname === '/contact' ? 'NavBarLink active' : 'NavBarLink'} to='/contact'>Contact</Link>
     </div>
 
