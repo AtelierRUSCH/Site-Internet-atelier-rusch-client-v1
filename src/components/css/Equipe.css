@@ -1,8 +1,10 @@
 .memberPic {
   border-radius: 50%;
   width: 10vw;
+  height: 10vw;
   margin-top: 5vw;
   filter: grayscale(100%);
+  background-size: cover;
 }
 
 .memberContainer {
@@ -44,11 +46,56 @@
 }
 
 .smallLinksContainer {
-  align-self: flex-start;
   padding: 2rem 3rem 4.5rem 3rem;
+  align-self: flex-start;
 }
 
 .EquipeMembersContainer .smallLink {
   margin: 0 4.5rem 0 0;
-  width: 100rem;
+}
+
+.w100p {
+  width: 100%;
+}
+
+.thxText {
+  font-family: 'HeimatMono', monospace;
+  font-size: 1.9rem;
+  line-height: 2.75rem;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
+.thxLinksContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 0;
+  padding-top: 2.5rem;
+  width: 100%;
+}
+
+.thxLink {
+  margin: 1rem 1rem;
+  font-family: "IBMPlex", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  color: #fbd052;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 25%;
+  text-align: center;
+}
+
+.w60vw {
+  width: 44vw;
+}
+
+.bgYellow {
+  background-color: #fbd052;
+}
+
+.p3vw {
+  padding: 4.5vw 8vw 4vw 8vw;
 }

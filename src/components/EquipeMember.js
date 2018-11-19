@@ -3,7 +3,7 @@ import './css/Equipe.css'
 
 const EquipeMember = ({member}) =>
   <div className="memberContainer" style={{ zIndex: `${member.id}` }}>
-    <img className="memberPic" src={member.image} alt={member.name} />
+    <div className="memberPic" style={{backgroundImage: `url(${member.image})`}}></div>
     <div className="memberName green">{member.name}</div>
     <h6>{member.position}</h6>
     <div className="memberContent">
