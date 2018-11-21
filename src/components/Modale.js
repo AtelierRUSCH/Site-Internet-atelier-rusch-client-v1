@@ -5,6 +5,7 @@ import store from '../store.js'
 import Partenaire from './Partenaire.js'
 import ArticleThumbnail from './ArticleThumbnail.js'
 import RedirectingBlockToAllArticles from './RedirectingBlockToAllArticles.js'
+import { navigate } from '@reach/router'
 
 const toHTML = {
   h2: ({ value }) => <h4>{value}</h4>,
@@ -30,6 +31,13 @@ const Modale = ({ article }) => {
     .map((element, i) => <Element key={i} element={element} />)
 
   const parentContextPath = window.location.pathname.replace(/\/\d+$/, '')
+
+  document.addEventListener('keydown', function(e) {
+    let keyCode = e.keyCode
+    if (keyCode === 27) {
+      navigate(parentContextPath)
+    }
+  })
 
   const state = store.getState()
 
