@@ -58,7 +58,7 @@ const Atelier = () => {
       <AtelierSection title={'Notre équipe'} bgColor="white">
         <div className="EquipeMembersContainer">
           {members}
-          <div className="memberContainer w60vw bgYellow p3vw">
+          <div className="memberContainer w60vw bgWhite p3vw">
             <div className="thxText">Et merci à tous ceux qui sont passés par chez nous !</div>
             <div className="thxLinksContainer">
               <a style={{ color: 'black' }} href='https://wildcodeschool.fr/' target='_blank' className="thxLink">Wild Code School</a>

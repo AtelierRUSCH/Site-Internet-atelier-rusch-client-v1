@@ -63,7 +63,7 @@
   font-size: 1.9rem;
   line-height: 2.75rem;
   text-align: center;
-  color: white;
+  color: #fbd052;
   font-weight: 600;
 }
 
@@ -92,8 +92,8 @@
   width: 44vw;
 }
 
-.bgYellow {
-  background-color: #fbd052;
+.bgWhite {
+  background-color: white;
 }
 
 .p3vw {

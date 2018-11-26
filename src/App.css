@@ -10,6 +10,11 @@
   transition: background-color 0.2s ease-in, opacity 0.2s ease-in, color 0.2s ease-in, filter 0.1s ease-in, box-shadow 0.2s ease-in;
 }
 
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 button {
   border: none;
   outline: 0;
