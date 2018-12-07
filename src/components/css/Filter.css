@@ -8,13 +8,12 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-content: center;
-  padding: 1.6vw 0 2.5vw 0;
+  padding: 1.7vw 0 2.5vw 0;
 }
 
 .Filter {
-  height: 1rem;
   background-color: transparent;
-  margin: 2vh 0 2vh 0;
+  margin: 2vh 0 1vh 0;
   cursor: pointer;
 }
 
