@@ -2,8 +2,6 @@ import React from 'react'
 import { Link } from '@reach/router'
 import './css/Nav.css'
 import Logo from './img/logo-rusch-noir.png'
-import { loadArticles } from '../actions'
-import store from '../store'
 
 const Nav = ({onPageChange}) =>
   <div className="NavBar">
