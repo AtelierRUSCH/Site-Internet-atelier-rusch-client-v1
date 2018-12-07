@@ -1,11 +1,10 @@
 import React from 'react'
 import './css/Modale.css'
-import { Link } from '@reach/router'
+import { Link, navigate } from '@reach/router'
 import store from '../store.js'
 import Partenaire from './Partenaire.js'
 import ArticleThumbnail from './ArticleThumbnail.js'
 import RedirectingBlockToAllArticles from './RedirectingBlockToAllArticles.js'
-import { navigate } from '@reach/router'
 
 const toHTML = {
   h2: ({ value }) => <h4>{value}</h4>,
@@ -32,7 +31,7 @@ const Modale = ({ article }) => {
 
   const parentContextPath = window.location.pathname.replace(/\/\d+$/, '')
 
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     let keyCode = e.keyCode
     if (keyCode === 27) {
       navigate(parentContextPath)

@@ -61,9 +61,9 @@ const Atelier = () => {
           <div className="memberContainer w60vw bgWhite p3vw">
             <div className="thxText">Et merci à tous ceux qui sont passés par chez nous !</div>
             <div className="thxLinksContainer">
-              <a style={{ color: 'black' }} href='https://wildcodeschool.fr/' target='_blank' className="thxLink">Wild Code School</a>
-              <a style={{ color: 'black' }} href='http://mariemalarme.fr/' target='_blank' className="thxLink">Marie Malarme</a>
-              <a style={{ color: 'black' }} href='http://makeici.org/icimontreuil/' target='_blank' className="thxLink">ICI Montreuil</a>
+              <a style={{ color: 'black' }} href='https://wildcodeschool.fr/' target='_blank' rel="noopener noreferrer" className="thxLink">Wild Code School</a>
+              <a style={{ color: 'black' }} href='http://mariemalarme.fr/' target='_blank' rel="noopener noreferrer" className="thxLink">Marie Malarme</a>
+              <a style={{ color: 'black' }} href='http://makeici.org/icimontreuil/' target='_blank' rel="noopener noreferrer" className="thxLink">ICI Montreuil</a>
             </div>
           </div>
         </div>

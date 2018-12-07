@@ -9,7 +9,7 @@ const ArticleThumbnail = ({ article, index }) => {
     const numberRegex = /\d/g
     const isArticlePage = numberRegex.test(window.location.pathname)
     if ((isArticlePage) || (window.location.pathname === '/')) {
-    document.getElementById('scrollToTop').scrollIntoView()
+      document.getElementById('scrollToTop').scrollIntoView()
     }
   }
 
