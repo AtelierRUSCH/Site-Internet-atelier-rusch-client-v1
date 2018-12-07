@@ -25,6 +25,8 @@ const LabRusch = (props) => {
         article={article}
         index={index}/>)
 
+  document.body.style.overflow = selectedArticle !== undefined ? 'hidden hidden' : 'hidden scroll'
+
   return (
     <div>
       <Nav />

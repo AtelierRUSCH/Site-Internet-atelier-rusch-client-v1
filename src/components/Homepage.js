@@ -34,6 +34,8 @@ const Homepage = (props) => {
     ? <div className='ModaleBlock'><Modale article={selectedArticle} displayModale={'block'} /></div>
     : ''
 
+  document.body.style.overflow = selectedArticle !== undefined ? 'hidden hidden' : 'hidden scroll'
+
   return (
     <div>
       <Nav />
