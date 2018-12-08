@@ -5,11 +5,18 @@ import { Link } from '@reach/router'
 const ArticleThumbnail = ({ article, index }) => {
   const articleId = String(article.id)
   const articleSection = String(article.section)
+  const scrollTop = () => {
+    const numberRegex = /\d/g
+    const isArticlePage = numberRegex.test(window.location.pathname)
+    if ((isArticlePage) || (window.location.pathname === '/')) {
+      document.getElementById('scrollToTop').scrollIntoView()
+    }
+  }
 
   return (
     <Link
       to={`/${articleSection}/${articleId}`}
-      onClick={() => document.getElementById('scrollToTop').scrollIntoView()}>
+      onClick={() => scrollTop()}>
       <div className='ArticleThumbnailClassic'
         style={article.hasStar === '1' ? { zIndex: index, background: `center / cover no-repeat url("${article.headerImage}"), rgba(0, 0, 0, 0.5)` } : { zIndex: index }}>
         <div className={(article.hasStar === '1' && window.location.pathname !== '/') ? 'ArticleThumbnailFilterBlack ArticleThumbnailHasStar' : 'ArticleThumbnailClassic'}>
