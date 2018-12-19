@@ -46,6 +46,7 @@ const Homepage = (props) => {
         <div className="IntroBlockLeft">
           <div className="LogoBlock">
             <img className="LogoImg" src={LogoAnim} alt="logo Rusch" />
+            <img style={{display: 'none'}} src={OgImage} alt="logo Rusch" />
           </div>
 
           <div className="CarrouselBlock">
