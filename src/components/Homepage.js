@@ -5,7 +5,6 @@ import ArticleThumbnail from './ArticleThumbnail.js'
 import Modale from './Modale.js'
 import './css/Homepage.css'
 import LogoAnim from './img/rusch-anim.gif'
-import OgImage from './img/thumbnail-rusch.png'
 import store from '../store.js'
 import { SlideShow } from './Carousel.js'
 import Nav from './Nav.js'
@@ -46,7 +45,6 @@ const Homepage = (props) => {
         <div className="IntroBlockLeft">
           <div className="LogoBlock">
             <img className="LogoImg" src={LogoAnim} alt="logo Rusch" />
-            <img style={{display: 'none'}} src={OgImage} alt="logo Rusch" />
           </div>
 
           <div className="CarrouselBlock">
