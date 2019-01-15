@@ -126,13 +126,26 @@ const Imgs = ({ element, children, ...rest }) => {
   )
 }
 
+const Video = ({ element, children, ...rest }) => {
+  return (
+    <div>
+      <div className='draggableElement'>
+        <label className='moveCursor'>Ajouter une vidéo :</label>
+        {children}
+      </div>
+      <input className="field" type="text" value={element.value} {...rest} autoFocus />
+    </div>
+  )
+}
+
 const toInput = {
   h2: (props) => <H2 {...props} />,
   p: (props) => <P {...props} />,
   blockquote: (props) => <Blockquote {...props} />,
   caption: (props) => <Caption {...props} />,
   abstract: (props) => <Abstract {...props} />,
-  imgs: (props) => <Imgs {...props} />
+  imgs: (props) => <Imgs {...props} />,
+  video: (props) => <Video {...props} />,
 }
 
 const Element = (props) => toInput[props.element.type](props)
@@ -257,7 +270,8 @@ class ArticleForm extends Component {
       blockquote: { 'type': 'blockquote', 'value': '' },
       caption: { 'type': 'caption', 'value': '' },
       abstract: { 'type': 'abstract', 'value': '' },
-      imgs: { 'type': 'imgs', 'value': '' }
+      imgs: { 'type': 'imgs', 'value': '' },
+      video: { 'type': 'video', 'value': '' }
     }
 
     const article = {
@@ -287,7 +301,8 @@ class ArticleForm extends Component {
       { type: 'blockquote', value: 'Citation' },
       { type: 'caption', value: 'Légende' },
       { type: 'abstract', value: 'Abstract' },
-      { type: 'imgs', value: 'Images' }
+      { type: 'imgs', value: 'Images' },
+      { type: 'video', value: 'Vidéo' }
     ].map((button, i) => <input type='button' key={button.i} onClick={() => this.addInput(button.type)} value={button.value} />)
 
     const dynamicInputs = article.content
