@@ -26,9 +26,16 @@ const ArticleThumbnail = ({ article, index }) => {
           <h5>
             {article.title}
           </h5>
-          <h6>
-            {`${article.date.slice(-2)}.${article.date.slice(5, 7)}.${article.date.slice(0, 4)}`}
-          </h6>
+            {article.section === 'projets'
+              ? <React.Fragment>
+                  <h6 style={{ marginLeft: '2rem', marginRight: '2rem', lineHeight: '1.2rem' }}>
+                    {article.client}
+                    <div style={{ height: '0.4rem' }} />
+                    {article.place}
+                  </h6>
+                </React.Fragment>
+              : <h6>{`${article.date.slice(-2)}.${article.date.slice(5, 7)}.${article.date.slice(0, 4)}`}</h6>
+            }
         </div>
       </div>
     </Link>
