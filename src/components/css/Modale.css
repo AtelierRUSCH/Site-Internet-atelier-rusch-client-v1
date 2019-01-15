@@ -46,15 +46,17 @@
 }
 
 .ModaleBlock img,
-.ModaleBlockPreview img {
+.ModaleBlock iframe,
+.ModaleBlockPreview img,
+.ModaleBlockPreview iframe {
   width: 50vw;
   padding-top: 3rem;
 }
 
-.ModaleBlockPreview img {
+/*.ModaleBlockPreview img {
   width: 50vw;
 }
-
+*/
 .ModaleBlockPreview h2 {
   padding: 0;
   margin: 5rem 2rem 0 7rem;

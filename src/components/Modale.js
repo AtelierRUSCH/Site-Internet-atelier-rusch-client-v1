@@ -6,18 +6,37 @@ import Partenaire from './Partenaire.js'
 import ArticleThumbnail from './ArticleThumbnail.js'
 import RedirectingBlockToAllArticles from './RedirectingBlockToAllArticles.js'
 
+const generateValidUrl = value => {
+  if (value.includes('&')) {
+    const splitUrl = value.split('&').slice()
+    const validUrl = splitUrl[0].replace('watch?v=', 'embed/')
+    return validUrl
+  }
+  else if (value.includes('watch?v=')) {
+    return value.replace('watch?v=', 'embed/')
+  }
+  else if (value.includes('youtu.be')) {
+    return value.replace('youtu.be', ('youtube.com/embed'))
+  }
+  else if (!value.includes('youtube')) {
+    return `https://youtube.com/embed/${value}`
+  }
+}
+
 const toHTML = {
   h2: ({ value }) => <h4>{value}</h4>,
   p: ({ value }) => <p>{value}</p>,
   blockquote: ({ value }) => <blockquote className='quote'>{value}</blockquote>,
   caption: ({ value }) => <p className='caption'>{value}</p>,
   abstract: ({ value }) => <p className='abstract'>{value}</p>,
-  imgs: ({ value }) => value.split(',').map((url, i) => <img key={i} src={url} alt='' />)
+  imgs: ({ value }) => value.split(',').map((url, i) => <img key={i} src={url} alt='' />),
+  video: ({ value }) => value.split(',').map((videoValue, i) => <iframe key={i} width="425" height="344" src={generateValidUrl(videoValue)} alt='' frameborder="0" />)
 }
 
 const Element = ({ element }) => toHTML[element.type](element)
 
 const Modale = ({ article }) => {
+
   let treatedContent = ''
 
   if (typeof article.content === 'string') {
