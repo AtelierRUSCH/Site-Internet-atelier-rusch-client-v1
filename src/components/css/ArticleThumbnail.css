@@ -19,7 +19,7 @@
   width: 25vw;
 }
 
-.ArticleThumbnailHasStar h6 {
+.ArticleThumbnailHasImage h6 {
   transition: 0.2s ease-in;
   color: white;
 }
@@ -39,12 +39,12 @@
   color: #2b2b2b;
 }
 
-.ArticleThumbnailHasStar h5 {
+.ArticleThumbnailHasImage h5 {
   transition: 0.2s ease-in;
   color: #5aff6e;
 }
 
-.ArticleThumbnailHasStar:hover h6 {
+.ArticleThumbnailHasImage:hover h6 {
   color: white;
 }
 
