@@ -199,3 +199,19 @@ div.LogInTitle {
 .LogOut:hover {
   fill: #5aff6e;
 }
+
+.picBtn {
+  background-color: red;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0;
+  margin: 0 0 0 10px;
+  border-radius: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: black;
+}
+
+.active {
+  opacity: 1;
+}

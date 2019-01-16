@@ -390,16 +390,16 @@ class ArticleForm extends Component {
                 <label>Partenaires du projet :<br/></label>
                 <div className='TagCardsContainer'>{PartnersCards}</div>
 
-                <label>Mettre une image sur la vignette de l'article :
+                <label style={{ marginTop: '1rem' }}>Mettre une image sur la vignette de l'article :
                   <button
                     className={ article.hasImage === '1' ? 'hasStar' : 'hasNoStar' }
-                    style={{ cursor: 'pointer', fontSize: '1.1rem', padding: '0', margin: '0 0 0 10px' }}
+                    style={{ cursor: 'pointer', lineHeight: '0.5rem', fontSize: '2.7rem', padding: '0', margin: '-7px 0 0 12px' }}
                     type="button" name="hasImage"
                     onClick={this.handleChange}>
-                IMG</button>
+                •</button>
                 </label>
 
-                <label>Mettre l'article à la une :
+                <label style={{ marginTop: '2.5rem' }} >Mettre l'article à la une :
                   <button
                     className={ article.hasStar === '1' ? 'hasStar' : 'hasNoStar' }
                     style={{ cursor: 'pointer', fontSize: '1.1rem', padding: '0', margin: '0 0 0 10px' }}
