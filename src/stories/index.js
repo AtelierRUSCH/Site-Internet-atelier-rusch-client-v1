@@ -20,7 +20,7 @@ import '../App.css'
 
 storiesOf('Thumbnails', module)
   .add('article classic', () => <ArticleThumbnail className="ArticleThumbnailClassic" article={mockedArticles[0]} />)
-  .add('article with star', () => <ArticleThumbnail className="ArticleThumbnailClassic ArticleThumbnailHasStar FilterBlack" article={mockedArticles[0]} />)
+  .add('article with star', () => <ArticleThumbnail className="ArticleThumbnailClassic ArticleThumbnailHasImage FilterBlack" article={mockedArticles[0]} />)
   .add('redirection block', () => <RedirectingBlockToAllArticles />)
 
 storiesOf('Modale', module)

@@ -157,14 +157,14 @@
   /* ARTICLES THUMBNAILS */
 
   .ArticleThumbnailClassic,
-  .ArticleThumbnailHasStar,
+  .ArticleThumbnailHasImage,
   .RedirectingBlockToAllArticles {
     width: 50vw;
     height: 50vw;
   }
 
   .ArticleThumbnailClassic > *,
-  .ArticleThumbnailHasStar > *,
+  .ArticleThumbnailHasImage > *,
   .RedirectingBlockToAllArticles > * {
     width: 50vw;
   }
@@ -366,7 +366,7 @@
   /* ARTICLES THUMBNAILS */
 
   .ArticleThumbnailClassic,
-  .ArticleThumbnailHasStar,
+  .ArticleThumbnailHasImage,
   .RedirectingBlockToAllArticles {
     width: 100vw;
     height: 50vh;
@@ -374,7 +374,7 @@
 
   .ArticleThumbnailClassic > *,
   .RedirectingBlockToAllArticles > *,
-  .ArticleThumbnailHasStar > * {
+  .ArticleThumbnailHasImage > * {
     width: 100vw;
   }
 

@@ -3,6 +3,7 @@ import { Link } from '@reach/router'
 import api from '../api.js'
 import IoAndroidDelete from 'react-icons/lib/io/android-delete'
 import IoEdit from 'react-icons/lib/io/edit'
+import IoIosImage from 'react-icons/lib/io/image'
 import MdAdd from 'react-icons/lib/md/add-circle-outline'
 
 const ArticleCard = ({ article }) =>
@@ -10,14 +11,16 @@ const ArticleCard = ({ article }) =>
   <div className='AdminCardFullWidth'>
     <div className='currentText' style={{ width: '40vw' }}>{article.title}</div>
     <div className='EditButtonsContainer'>
-      <h6 style={{ marginRight: '50px' }}>{`${article.date.slice(-2)}.${article.date.slice(5, 7)}.${article.date.slice(0, 4)}`}</h6>
+      <h6>{`${article.date.slice(-2)}.${article.date.slice(5, 7)}.${article.date.slice(0, 4)}`}</h6>
+      <button><IoIosImage className={ article.hasImage === '1' ? 'ReactIconPic' : 'ReactIconPic inactive' }/></button>
+      <button className={ article.hasStar === '1' ? 'star hasStar' : 'star hasNoStar' }>★</button>
       <Link to={String(article.id)} onClick={() => document.getElementById('box').scrollIntoView()} >
         <button className="ReactIcon">
           <IoEdit/>
         </button>
       </Link>
       <button className="ReactIcon" onClick={() => {
-        if (window.confirm('la suppression est irréversible. Pas de regrets?')) {
+        if (window.confirm('La suppression est irréversible. Pas de regrets?')) {
           api.deleteArticle(article.id)
             .then(() => window.location.reload())
         } else {
@@ -26,7 +29,7 @@ const ArticleCard = ({ article }) =>
       }}>
         <IoAndroidDelete/>
       </button>
-      <button className={ article.hasStar === '1' ? 'hasStar' : 'hasNoStar' }>★</button>
+
     </div>
   </div>
 

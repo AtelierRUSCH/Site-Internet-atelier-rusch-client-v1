@@ -18,8 +18,8 @@ const ArticleThumbnail = ({ article, index }) => {
       to={`/${articleSection}/${articleId}`}
       onClick={() => scrollTop()}>
       <div className='ArticleThumbnailClassic'
-        style={article.hasStar === '1' ? { zIndex: index, background: `center / cover no-repeat url("${article.headerImage}"), rgba(0, 0, 0, 0.5)` } : { zIndex: index }}>
-        <div className={(article.hasStar === '1' && window.location.pathname !== '/') ? 'ArticleThumbnailFilterBlack ArticleThumbnailHasStar' : 'ArticleThumbnailClassic'}>
+        style={article.hasImage === '1' ? { zIndex: index, background: `center / cover no-repeat url("${article.headerImage}"), rgba(0, 0, 0, 0.5)` } : { zIndex: index }}>
+        <div className={(article.hasImage === '1' && window.location.pathname !== '/') ? 'ArticleThumbnailFilterBlack ArticleThumbnailHasImage' : 'ArticleThumbnailClassic'}>
           <h6>
             {article.tags.join(' - ')}
           </h6>

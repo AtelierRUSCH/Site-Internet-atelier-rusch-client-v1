@@ -43,7 +43,6 @@ button {
   padding: 5px;
   margin-left: 20px;
   width: 20px;
-  cursor: pointer;
 }
 
 .ButtonCreateElement {
@@ -66,6 +65,7 @@ button {
 .ReactIconAdd {
   fill: #5aff6e;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .ButtonCreateElement:hover .ReactIconAdd {
@@ -80,10 +80,16 @@ button {
   width: 35vw;
 }
 
+.star {
+  cursor: default;
+  border-right: solid 1px rgba(0, 0, 0, 0.15);
+  padding-right: 2.5rem;
+  margin-top: 2px;
+}
+
 .hasStar {
   font-size: 1rem;
   color: #fbd052;
-  cursor: default;
 }
 
 .hasNoStar {
@@ -96,10 +102,23 @@ button {
 .ReactIcon {
   font-size: 1rem;
   opacity: 0.65;
+  cursor: pointer;
 }
 
 .ReactIcon:hover {
   opacity: 1;
+}
+
+.ReactIconPic {
+  font-size: 1rem;
+  margin-top: 3px;
+  margin-left: 2px;
+  color: #5aff6e;
+  opacity: 0.7;
+}
+
+.inactive {
+  opacity: 0.25;
 }
 
 /* CONTAINERS */
@@ -165,6 +184,11 @@ div.LogInTitle {
 .EditButtonsContainer {
   display: flex;
   align-items: center;
+}
+
+.EditButtonsContainer h6 {
+  margin-right: 100px;
+  margin-top: 5px;
 }
 
 .LogOut {

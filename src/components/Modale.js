@@ -65,7 +65,7 @@ const Modale = ({ article }) => {
 
   const articleThumbnails = articles
     .filter(article => article.isDraft === '0')
-    .filter(article => article.hasStar === '0')
+    .filter(article => article.hasImage === '0')
     .filter(article => article.section === getSection)
     .slice(0, 2)
     .map((article, index) => <ArticleThumbnail key={article.id} article={article} index={index} className="ArticleThumbnailClassic" />)
