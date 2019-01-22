@@ -30,7 +30,7 @@ const toHTML = {
   caption: ({ value }) => <p className='caption'>{value}</p>,
   abstract: ({ value }) => <p className='abstract'>{value}</p>,
   imgs: ({ value }) => value.split(',').map((url, i) => <img key={i} src={url} alt='' />),
-  video: ({ value }) => value.split(',').map((videoValue, i) => <iframe key={i} width="425" height="344" src={generateValidUrl(videoValue)} alt='' frameborder="0" />)
+  video: ({ value }) => value.split(',').map((videoValue, i) => <iframe key={i} width="425" height="344" src={generateValidUrl(videoValue)} allowfullscreen="allowfullscreen" alt='' frameborder="0" />)
 }
 
 const Element = ({ element }) => toHTML[element.type](element)

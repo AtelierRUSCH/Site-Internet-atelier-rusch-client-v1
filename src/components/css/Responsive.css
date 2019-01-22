@@ -56,6 +56,10 @@
     width: 25vw;
   }
 
+  .prevMembersContainer {
+    width: 34vw;
+  }
+
   .PartenairesContainer {
     margin: 3rem 15rem 3rem 25rem;
   }
@@ -212,6 +216,7 @@
 
   .memberPic {
     width: 15vw;
+    height: 15vw;
   }
 
   .PartenairesContainer {
@@ -227,6 +232,10 @@
   div.LogoPartenaire {
     width: 18vw;
     height: 10vw;
+  }
+
+  .thxLink {
+    width: 100%;
   }
 
   /* PAGES PROJETS & LAB */
@@ -440,6 +449,7 @@
 
   .memberPic {
     width: 30vw;
+    height: 30vw;
     margin-top: 10vh;
   }
 

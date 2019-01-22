@@ -14,10 +14,14 @@ import './components/css/Responsive.css'
 import store from './store'
 import api from './api'
 
-import { loadArticles, loadFilters, loadMembers, loadPartners } from './actions'
+import { loadArticles, loadFilters, loadMembers, loadPartners, loadThanks } from './actions'
 
 class App extends Component {
   syncDatas = async () => {
+
+    const thanks = await api.getThanks()
+    store.dispatch(loadThanks(thanks))
+
     const partners = await api.getPartenaires()
     store.dispatch(loadPartners(partners))
 
