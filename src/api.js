@@ -36,6 +36,8 @@ const getFilters = () => api('/filters')
 
 const getEquipe = () => api('/equipe')
 
+const getThanks = () => api('/thanks')
+
 const getPartenaires = () => api('/partenaires')
 
 const newPartenaire = partenaire => api.post('/partenaires', partenaire)
@@ -64,6 +66,12 @@ const updateMember = (id, member) => api.put(`/equipe/${id}`, member)
 
 const deleteMember = (id, member) => api.delete(`/equipe/${id}`, member)
 
+const newThank = thank => api.post('/thanks', thank)
+
+const updateThank = (id, thank) => api.put(`/thanks/${id}`, thank)
+
+const deleteThank = (id, thank) => api.delete(`/thanks/${id}`, thank)
+
 // credentials routes
 
 const loginUser = (user) => api.post('/sign-in', user)
@@ -76,6 +84,7 @@ export default {
   getArticles,
   getFilters,
   getEquipe,
+  getThanks,
   getPartenaires,
   newFilter,
   updateFilter,
@@ -89,6 +98,9 @@ export default {
   newMember,
   updateMember,
   deleteMember,
+  newThank,
+  updateThank,
+  deleteThank,
   loginUser,
   logoutUser
 }

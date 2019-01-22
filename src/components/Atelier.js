@@ -18,6 +18,8 @@ const Atelier = () => {
 
   const partners = state.partners.allPartners.map(partner => <Partenaire key={partner.id} partner={partner} />)
 
+  const thanks = state.thanks.allThanks.map(({ name, url }) => <a style={{ color: 'black' }} href={url} target='_blank' rel="noopener noreferrer" className="thxLink">{name}</a>)
+
   return (
     <div>
       <Nav />
@@ -58,12 +60,11 @@ const Atelier = () => {
       <AtelierSection title={'Notre équipe'} bgColor="white">
         <div className="EquipeMembersContainer">
           {members}
-          <div className="memberContainer w60vw bgWhite p3vw">
-            <div className="thxText">Et merci à tous ceux qui sont passés par chez nous !</div>
+          <div className="memberContainer prevMembersContainer bgWhite p3vw">
+            <div className="thxText">Et merci à tous ceux qui sont passés et passent encore par chez nous !</div>
             <div className="thxLinksContainer">
-              <a style={{ color: 'black' }} href='https://wildcodeschool.fr/' target='_blank' rel="noopener noreferrer" className="thxLink">Wild Code School</a>
-              <a style={{ color: 'black' }} href='http://mariemalarme.fr/' target='_blank' rel="noopener noreferrer" className="thxLink">Marie Malarme</a>
-              <a style={{ color: 'black' }} href='http://makeici.org/icimontreuil/' target='_blank' rel="noopener noreferrer" className="thxLink">ICI Montreuil</a>
+              {thanks}
+              <span style={{ width: '25%', margin: '1rem', visibility: 'hidden' }} />
             </div>
           </div>
         </div>

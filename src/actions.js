@@ -4,6 +4,8 @@ export const loadFilters = filters => ({ type: 'LOAD_FILTERS', filters })
 
 export const loadMembers = members => ({ type: 'LOAD_MEMBERS', members })
 
+export const loadThanks = thanks => ({ type: 'LOAD_THANKS', thanks })
+
 export const loadPartners = partners => ({ type: 'LOAD_PARTNERS', partners })
 
 export const loadModale = (id, displayModale) => ({ type: 'LOAD_MODALE', id, displayModale })
