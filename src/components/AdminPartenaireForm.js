@@ -7,18 +7,21 @@ class AdminPartenaireForm extends Component {
     name: this.props.partenaire.name || '',
     image: this.props.partenaire.image || '',
     shortDescription: this.props.partenaire.shortDescription || '',
+    url: this.props.partenaire.url || '',
     errorPost: ''
   }
 
-handleChange = event => {
-  const key = event.target.name
-  this.setState({ ...this.state.partenaire, [key]: event.target.value, errorPost: '' })
-}
+  handleChange = event => {
+    const key = event.target.name
+    this.setState({
+      ...this.state.partenaire,
+      [key]: event.target.value,
+      errorPost: ''
+    })
+  }
 
   handleSubmit = event => {
     event.preventDefault()
-
-    console.log('chienfou')
 
     if (this.state.name === '') {
       this.setState({ errorPost: '* Il faut sélectionner un nom !' })
@@ -27,28 +30,56 @@ handleChange = event => {
     } else if (this.state.shortDescription === '') {
       this.setState({ errorPost: '* Il faut renseigner une description !' })
     } else {
-      this.props.submitPartenaire(this.state)
+      this.props
+        .submitPartenaire(this.state)
         .then(() => navigate('/admin/partenaires'))
         .then(() => window.location.reload())
     }
   }
 
-  render () {
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className='formTitle yellow'>Nouveau partenaire :</div>
-        <label>Nom du partenaire :<br/>
-          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+        <div className="formTitle yellow">Nouveau partenaire :</div>
+        <label>
+          Nom du partenaire :<br />
+          <input
+            type="text"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
         </label>
-        <label>Logo du partenaire :<br/>
-          <input type="text" name="image" value={this.state.image} onChange={this.handleChange} />
+        <label>
+          Logo du partenaire :<br />
+          <input
+            type="text"
+            name="image"
+            value={this.state.image}
+            onChange={this.handleChange}
+          />
         </label>
-        <label>Description du partenaire :<br/>
-          <textarea type="text" name="shortDescription" value={this.state.shortDescription} onChange={this.handleChange} />
+        <label>
+          Description du partenaire :<br />
+          <textarea
+            type="text"
+            name="shortDescription"
+            value={this.state.shortDescription}
+            onChange={this.handleChange}
+          />
+        </label>
+        <label>
+          Site du partenaire :<br />
+          <textarea
+            type="text"
+            name="url"
+            value={this.state.url}
+            onChange={this.handleChange}
+          />
         </label>
 
-        <input className='submit' type="submit" value="Publier" />
-        <div className='errorPost'>{this.state.errorPost}</div>
+        <input className="submit" type="submit" value="Publier" />
+        <div className="errorPost">{this.state.errorPost}</div>
       </form>
     )
   }
