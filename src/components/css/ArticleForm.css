@@ -28,13 +28,65 @@ form button {
   height: calc(100vh - 65px);
 }
 
-input {
-  height: 35px;
+input,
+.DraftEditor-root {
   width: 35vw;
   margin-bottom: 30px;
-  margin-top: 10px;
   white-space: pre-line;
+}
+
+input {
+  height: 35px;
+  margin-top: 10px;
   border: solid 1px darkgrey;
+  padding: 0 10px;
+}
+
+.DraftEditor-root {
+  min-height: 35px;
+  font-family: 'IBMPlex', sans-serif;
+  font-size: 0.8rem;
+  min-height: 10vh;
+  border-bottom: solid 1px darkgrey;
+  border-right: solid 1px darkgrey;
+  border-left: solid 1px darkgrey;
+}
+
+.DraftEditor-editorContainer,
+.public-DraftEditor-content {
+  padding: 5px 7px 7px 8px;
+  min-height: 10vh;
+}
+
+.text-editor-toolbar {
+  border-top: solid 1px darkgrey;
+  border-right: solid 1px darkgrey;
+  border-left: solid 1px darkgrey;
+  width: 35vw;
+  padding-top: 7px;
+  padding-bottom: 2px;
+  padding-left: 9px;
+}
+
+.draftBtn {
+  margin: 0 5px 0 0;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
 }
 
 textarea {
@@ -44,6 +96,7 @@ textarea {
   margin-bottom: 30px;
   margin-top: 10px;
   white-space: pre-line;
+  padding: 8px 10px;
 }
 
 input:focus,
@@ -69,7 +122,13 @@ label {
   flex-wrap: wrap;
 }
 
-input[type="submit"],
+.labelContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+input[type='submit'],
 .draft {
   cursor: pointer;
   height: 35px;
@@ -80,16 +139,16 @@ input[type="submit"],
   margin-bottom: 5rem;
 }
 
-input[type="submit"].submit:hover {
+input[type='submit'].submit:hover {
   background-color: #2b2b2b;
   color: white;
 }
 
-input[type="submit"].draft {
+input[type='submit'].draft {
   margin: 2rem 0 0.25rem 0;
 }
 
-input[type="submit"].draft:hover {
+input[type='submit'].draft:hover {
   opacity: 1;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
