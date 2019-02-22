@@ -23,7 +23,9 @@ const generateValidUrl = value => {
 
 const toHTML = {
   h2: ({ value }) => <h4>{value}</h4>,
-  p: ({ value }) => <p>{ReactHtmlParser(value)}</p>,
+  p: ({ value }) => (
+    <div style={{ alignSelf: 'flex-start' }}>{ReactHtmlParser(value)}</div>
+  ),
   blockquote: ({ value }) => <blockquote className="quote">{value}</blockquote>,
   caption: ({ value }) => <p className="caption">{value}</p>,
   abstract: ({ value }) => <p className="abstract">{value}</p>,
