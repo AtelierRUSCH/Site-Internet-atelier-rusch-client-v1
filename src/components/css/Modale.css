@@ -27,10 +27,15 @@
   position: fixed;
   right: 25px;
   top: 20px;
-  font-size: 1.75rem;
-  background-color: transparent;
+  font-size: 2.5rem;
+  background: radial-gradient(rgba(255, 255, 255, 0.8), transparent 65%);
   cursor: pointer;
   z-index: 5000;
+  width: 85px;
+  height: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ModaleBlock p {
