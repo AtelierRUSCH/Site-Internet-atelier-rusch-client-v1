@@ -7,7 +7,6 @@ import store from '../store.js'
 import { Editor, EditorState, RichUtils } from 'draft-js'
 import { stateToHTML } from 'draft-js-export-html'
 import { stateFromHTML } from 'draft-js-import-html'
-import ReactHtmlParser from 'react-html-parser'
 
 const formatDate = () => {
   const today = new Date(Date.now())

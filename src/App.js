@@ -14,11 +14,16 @@ import './components/css/Responsive.css'
 import store from './store'
 import api from './api'
 
-import { loadArticles, loadFilters, loadMembers, loadPartners, loadThanks } from './actions'
+import {
+  loadArticles,
+  loadFilters,
+  loadMembers,
+  loadPartners,
+  loadThanks
+} from './actions'
 
 class App extends Component {
   syncDatas = async () => {
-
     const thanks = await api.getThanks()
     store.dispatch(loadThanks(thanks))
 
@@ -35,28 +40,28 @@ class App extends Component {
     store.dispatch(loadMembers(members))
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.unsubscribe = store.subscribe(() => this.forceUpdate())
 
     this.syncDatas()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.unsubscribe()
   }
 
-  render () {
+  render() {
     return (
       <div className="App">
         <Router>
-          <Homepage path='/' />
-          <Atelier path='atelier' />
-          <Projets path='projets' />
-          <Projets path='projets/:articleId' />
-          <LabRusch path='lab' />
-          <LabRusch path='lab/:articleId' />
-          <Contact path='contact' />
-          <Admin path='admin/*' />
+          <Homepage path="/" />
+          <Atelier path="atelier" />
+          <Projets path="projets" />
+          <Projets path="projets/:articleId" />
+          <LabRusch path="lab" />
+          <LabRusch path="lab/:articleId" />
+          <Contact path="contact" />
+          <Admin path="admin/*" />
         </Router>
         <Footer />
       </div>
