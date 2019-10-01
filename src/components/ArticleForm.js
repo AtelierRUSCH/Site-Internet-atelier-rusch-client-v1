@@ -32,7 +32,8 @@ const freshArticle = {
   hasImage: '0',
   content: [],
   partners: [],
-  isDraft: false
+  isDraft: false,
+  suggestion: 0
 }
 
 const H2 = ({ element, children, ...rest }) => {
@@ -384,7 +385,7 @@ class ArticleForm extends Component {
     ].map((button, i) => (
       <input
         type="button"
-        key={button.i}
+        key={i}
         onClick={() => this.addInput(button.type)}
         value={button.value}
       />
@@ -420,6 +421,12 @@ class ArticleForm extends Component {
 
     const state = store.getState()
 
+    const articles = state.articles.allArticles
+
+    const articlesToSuggest = articles
+      .filter(a => a.id !== article.id)
+      .filter(a => a.isDraft === '0')
+
     const TagCard = ({ tag }) => (
       <button
         key={tag.id}
@@ -441,7 +448,7 @@ class ArticleForm extends Component {
 
     const TagCards = state.filters.allFilters
       .filter(tag => this.state.article.section === tag.section)
-      .map(tag => <TagCard tag={tag} />)
+      .map(tag => <TagCard key={tag.id} tag={tag} />)
 
     const PartnerCard = ({ partner }) => (
       <button
@@ -463,7 +470,7 @@ class ArticleForm extends Component {
     )
 
     const PartnersCards = state.partners.allPartners.map(partner => (
-      <PartnerCard partner={partner} />
+      <PartnerCard key={partner.id} partner={partner} />
     ))
 
     return (
@@ -587,6 +594,24 @@ class ArticleForm extends Component {
                   Partenaires du projet :<br />
                 </label>
                 <div className="TagCardsContainer">{PartnersCards}</div>
+
+                <label>
+                  Article en suggestion en fin de page :
+                  <select
+                    name="suggestion"
+                    value={article.suggestion || undefined}
+                    onChange={event =>
+                      this.handleChange(event.target.name, event.target.value)
+                    }
+                  >
+                    <option value={0}>Choisissez un article :</option>
+                    {articlesToSuggest.map(a => (
+                      <option key={a.id} value={a.id}>
+                        {a.title}
+                      </option>
+                    ))}
+                  </select>
+                </label>
 
                 <label style={{ marginTop: '1rem' }}>
                   Mettre une image sur la vignette de l'article :
