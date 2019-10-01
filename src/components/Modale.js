@@ -78,19 +78,16 @@ const Modale = ({ article }) => {
 
   const getSection = parentContextPath.slice(1, parentContextPath.length)
 
-  const articleThumbnails = articles
-    .filter(article => article.isDraft === '0')
-    .filter(article => article.hasImage === '0')
-    .filter(article => article.section === getSection)
-    .slice(0, 2)
-    .map((article, index) => (
-      <ArticleThumbnail
-        key={article.id}
-        article={article}
-        index={index}
-        className="ArticleThumbnailClassic"
-      />
-    ))
+  const articleSuggestedChosen = articles.find(a => a.id === article.suggestion)
+
+  const articlesSuggested = articles
+    .filter(a => a.id !== article.id)
+    .filter(a => a.isDraft === '0')
+    .filter(a => a.section === getSection)
+
+  const articleSuggestions = articleSuggestedChosen
+    ? [articleSuggestedChosen, ...articlesSuggested.slice(0, 1)]
+    : articlesSuggested.slice(0, 2)
 
   const getArticlePartners = article.partners
 
@@ -100,7 +97,7 @@ const Modale = ({ article }) => {
     )
 
   const partners = getPartners(getArticlePartners).map(partner => (
-    <Partenaire partner={partner} />
+    <Partenaire key={partner.id} partner={partner} />
   ))
 
   const articlesSuggestions = (
@@ -108,7 +105,14 @@ const Modale = ({ article }) => {
       <div className="articleSuggestion">
         <h4>Ceci pourrait aussi vous intéresser :</h4>
       </div>
-      {articleThumbnails}
+      {articleSuggestions.map((article, index) => (
+        <ArticleThumbnail
+          key={article.id}
+          article={article}
+          index={index}
+          className="ArticleThumbnailClassic"
+        />
+      ))}
       <RedirectingBlockToAllArticles section={getSection} />
     </div>
   )
