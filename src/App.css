@@ -3,11 +3,13 @@
   margin: 0;
   padding: 0;
   color: #2b2b2b;
-  transition: background-color 0.2s ease-out, opacity 0.2s ease-out, color 0.2s ease-out, filter 0.1s ease-out, box-shadow 0.2s ease-out;
+  transition: background-color 0.2s ease-out, opacity 0.2s ease-out,
+    color 0.2s ease-out, filter 0.1s ease-out, box-shadow 0.2s ease-out;
 }
 
 *:hover {
-  transition: background-color 0.2s ease-in, opacity 0.2s ease-in, color 0.2s ease-in, filter 0.1s ease-in, box-shadow 0.2s ease-in;
+  transition: background-color 0.2s ease-in, opacity 0.2s ease-in,
+    color 0.2s ease-in, filter 0.1s ease-in, box-shadow 0.2s ease-in;
 }
 
 body {
@@ -57,29 +59,29 @@ a {
 */
 
 @font-face {
-  font-family: "HeimatMono";
-  src: url("./fonts/HeimatMono.ttf") format("truetype");
+  font-family: 'HeimatMono';
+  src: url('./fonts/HeimatMono.ttf') format('truetype');
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "HeimatMono";
-  src: url("./fonts/HeimatMonoExtraBold.ttf") format("truetype");
+  font-family: 'HeimatMono';
+  src: url('./fonts/HeimatMonoExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "IBMPlex";
-  src: url("./fonts/IBMPlexSansRegular.ttf") format("truetype");
+  font-family: 'IBMPlex';
+  src: url('./fonts/IBMPlexSansRegular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "IBMPlex";
-  src: url("./fonts/IBMPlexSansSemiBold.ttf") format("truetype");
+  font-family: 'IBMPlex';
+  src: url('./fonts/IBMPlexSansSemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
@@ -161,7 +163,7 @@ h6 {
 }
 
 .smallLink {
-  font-family: "IBMPlex", sans-serif;
+  font-family: 'IBMPlex', sans-serif;
   font-weight: 200;
   font-size: 1rem;
   color: #fbd052;
@@ -172,13 +174,16 @@ h6 {
 
 .quote {
   /* Quotes in yellow and big size : on modale page and atelier page */
-  font-family: "HeimatMono", monospace;
+  font-family: 'HeimatMono', monospace;
   font-weight: 200;
   letter-spacing: 2px;
   font-size: 2.25rem;
   line-height: 3rem;
   padding: 3rem 15rem;
   color: #fbd052;
+  white-space: pre-line;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .caption {
