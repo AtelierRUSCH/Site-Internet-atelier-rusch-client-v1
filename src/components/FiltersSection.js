@@ -6,15 +6,20 @@ import store from '../store.js'
 const FiltersSection = () => {
   const state = store.getState()
 
-  const getFiltersNames = state.filters.allFilters
-    .filter(filter => filter.section === window.location.pathname.slice(1))
+  const getFiltersNames = state.filters.allFilters.filter(
+    filter => filter.section === window.location.pathname.slice(1)
+  )
 
-  const filtersNames = getFiltersNames
-    .map((filter, i) => <Filter key={i} filter={filter} filtersLength={getFiltersNames.length} />)
+  const filtersNames = getFiltersNames.map((filter, i) => (
+    <Filter key={i} filter={filter} filtersLength={getFiltersNames.length} />
+  ))
 
   return (
     <div className="FiltersSection">
-      {filtersNames}
+      <div className="FilterTitle">
+        <h6>Filtrer:</h6>
+      </div>
+      <div className="FiltersContainer">{filtersNames}</div>
     </div>
   )
 }

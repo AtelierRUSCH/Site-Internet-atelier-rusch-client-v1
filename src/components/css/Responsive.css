@@ -342,6 +342,10 @@
     width: 50vw;
   }
 
+  .FilterTitle {
+    margin: 0;
+  }
+
   .NavBarLink {
     margin: 0 1rem;
   }

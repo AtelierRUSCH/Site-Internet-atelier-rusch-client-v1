@@ -5,19 +5,36 @@
   width: 100vw;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: center;
   padding: 1.7vw 0 2.5vw 0;
 }
 
 .Filter {
   background-color: transparent;
-  margin: 2vh 0 1vh 0;
   cursor: pointer;
+  margin: 2vh 0 1vh 0;
+}
+
+.FilterTitle {
+  display: flex;
+  margin: 0 1rem 0 4rem;
+}
+
+.FilterTitle h6 {
+  margin: 2vh 0 1vh 0;
+  padding-top: 5px;
+  border-bottom: solid 1px black;
 }
 
 .FilterActive h6 {
   cursor: pointer;
   font-weight: 700;
+}
+
+.FiltersContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: center;
+  width: 100%;
 }
