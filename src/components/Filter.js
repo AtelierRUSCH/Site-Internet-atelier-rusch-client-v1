@@ -8,9 +8,11 @@ const Filter = ({ filter, filtersLength }) => {
     store.dispatch(toggleFilters(filter.id))
   }
   return (
-    <button style={ filtersLength <= 3 ? {width: '33vw'} : {width: '25vw'}}
+    <button
+      style={filtersLength <= 3 ? { width: '33%' } : { width: '25%' }}
       className={filter.isActive ? 'Filter FilterActive' : 'Filter'}
-      onClick={ event => toggleFiltersAndFilterArticles()}>
+      onClick={event => toggleFiltersAndFilterArticles()}
+    >
       <h6>{filter.filterTag}</h6>
     </button>
   )
