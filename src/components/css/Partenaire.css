@@ -19,6 +19,13 @@
 .PartenaireContainer h6 {
   margin: 2rem 2.5rem 2rem 2.5rem;
   line-height: 1.2rem;
+  display: -webkit-box;
+  /* autoprefixer: off */
+  -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 div.LogoPartenaire {
