@@ -50,7 +50,7 @@ const toHTML = {
 
 const Element = ({ element }) => toHTML[element.type](element)
 
-const Modale = ({ article }) => {
+const Modale = ({ article, setFullScreen }) => {
   let treatedContent = ''
 
   if (typeof article.content === 'string') {
@@ -68,7 +68,7 @@ const Modale = ({ article }) => {
   document.addEventListener('keydown', function(e) {
     let keyCode = e.keyCode
     if (keyCode === 27) {
-      navigate(parentContextPath)
+      setFullScreen ? setFullScreen() : navigate(parentContextPath)
     }
   })
 
@@ -125,9 +125,11 @@ const Modale = ({ article }) => {
 
   return (
     <div id="scrollToTop">
-      <Link className="closeModaleBtn" to={parentContextPath}>
-        <div className="closeModaleBtn">✕</div>
-      </Link>
+      {!setFullScreen && (
+        <Link className="closeModaleBtn" to={parentContextPath}>
+          <div className="closeModaleBtn">✕</div>
+        </Link>
+      )}
       <div
         className="ModalePic"
         style={{

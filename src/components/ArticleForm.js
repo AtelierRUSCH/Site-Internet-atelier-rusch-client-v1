@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Modale from './Modale.js'
 import { Container, Draggable } from 'react-smooth-dnd'
 import './css/ArticleForm.css'
@@ -234,7 +234,8 @@ const moveElement = (array, fromIndex, toIndex) => {
 class ArticleForm extends Component {
   state = {
     article: this.props.article || freshArticle,
-    errorPost: ''
+    errorPost: '',
+    fullScreen: false
   }
 
   handleDnd = ({ removedIndex: fromIndex, addedIndex: toIndex }) => {
@@ -696,13 +697,38 @@ class ArticleForm extends Component {
           <div
             style={{
               position: 'fixed',
-              top: '0',
-              right: '0',
-              overflow: 'auto'
+              top: 0,
+              right: 0,
+              overflow: 'auto',
+              zIndex: this.state.fullScreen ? 11000 : 5000
             }}
-            className="item-right ModaleBlockPreview"
+            className={
+              this.state.fullScreen
+                ? 'ModaleBlock'
+                : 'item-right ModaleBlockPreview'
+            }
           >
-            <Modale article={article} />
+            <div
+              onClick={() =>
+                this.setState({ fullScreen: !this.state.fullScreen })
+              }
+              style={{
+                width: this.state.fullScreen ? '100%' : '50%'
+              }}
+              className="fullScreenBanner"
+            >
+              <div className="fullScreenArrow">
+                {this.state.fullScreen ? '⟵' : '⟶'}
+              </div>
+              {this.state.fullScreen
+                ? 'Retour au mode Édition'
+                : 'Mode plein écran'}
+            </div>
+            {this.state.fullScreen && <div className="fullScreenPlaceholder" />}
+            <Modale
+              article={article}
+              setFullScreen={() => this.setState({ fullScreen: false })}
+            />
           </div>
         </div>
       </div>

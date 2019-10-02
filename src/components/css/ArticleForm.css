@@ -28,6 +28,36 @@ form button {
   height: calc(100vh - 65px);
 }
 
+.fullScreenBanner {
+  position: fixed;
+  z-index: 6000;
+  background: hsl(0, 0%, 15%);
+  color: hsl(0, 0%, 85%);
+  padding: 0 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  font-family: 'IBMPlex', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.fullScreenBanner:hover,
+.fullScreenBanner:hover .fullScreenArrow {
+  color: white;
+}
+
+.fullScreenArrow {
+  color: hsl(0, 0%, 85%);
+  margin-right: 13px;
+}
+
+.fullScreenPlaceholder {
+  height: 2.75rem;
+  width: 100%;
+}
+
 input,
 .DraftEditor-root {
   width: 35vw;
