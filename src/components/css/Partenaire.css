@@ -22,6 +22,7 @@
   display: -webkit-box;
   /* autoprefixer: off */
   -webkit-box-orient: vertical;
+  // eslint-disable-next-line
   /* autoprefixer: on */
   -webkit-line-clamp: 8;
   overflow: hidden;
