@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build sitemap",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "npm run lint:js && npm run lint:css",
@@ -28,7 +28,8 @@
     "lint:css": "stylelint 'src/**/*.css'",
     "lint:fix": "eslint --fix . && stylelint --fix 'src/**/*.css'",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "sitemap": "mv public/sitemap.txt build/"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
