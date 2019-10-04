@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Nav from './Nav.js'
 import Facebook from './img/fb.png'
 import Instagram from './img/instagram.png'
 import Linkedin from './img/linkedin.png'
 import './css/Contact.css'
+
+// get from db
+const contactData = {
+  address: ['ICIMontreuil', '135 boulevard Chanzy', '93100 Montreuil'],
+  additionalInfo: ['Metro : Robespierre ligne 9'],
+  mail: ['bonjour@atelier-rusch.com'],
+  phone: [
+    { name: 'Marie', number: '+33 6 83 09 86 16' },
+    { name: 'Michael', number: '+33 6 69 17 12 83' }
+  ],
+  rs: {
+    fb: 'https://www.facebook.com/collectifrusch/',
+    ig: '"https://www.instagram.com/atelier_rusch/"',
+    li: '"https://www.linkedin.com/company/atelierrusch/"'
+  }
+}
 
 const Contact = () => (
   <div>
@@ -15,22 +31,34 @@ const Contact = () => (
       <div className="address currentText">
         <div>
           <h4>Adresse</h4>
-          ICIMontreuil <br />
-          135 boulevard Chanzy <br />
-          93100 Montreuil
+          {contactData.address.map((line, i) => (
+            <Fragment key={`adress-line${i + 1}`}>
+              {line}
+              <br />
+            </Fragment>
+          ))}
           <br />
-          Metro : Robespierre ligne 9 <br />
+          {contactData.additionalInfo.map((line, i) => (
+            <Fragment key={`additional-info-line${i + 1}`}>
+              {line}
+              <br />
+            </Fragment>
+          ))}
         </div>
         <div>
           <h4>Contacts</h4>
-          <a href="mailto:bonjour@atelier-rusch.com">
-            bonjour@atelier-rusch.com
-          </a>
-          <br />
-          Marie : +33 6 83 09 86 16
-          <br />
-          Michael : +33 6 69 17 12 83
-          <br />
+          {contactData.mail.map(mail => (
+            <Fragment>
+              <a href={`mailto:${mail}`}>{mail}</a>
+              <br />
+            </Fragment>
+          ))}
+          {Object.values(contactData.phone).map(({ name, number }) => (
+            <Fragment>
+              {name}: {number}
+              <br />
+            </Fragment>
+          ))}
           <div className="reseaux">
             <a
               href="https://www.facebook.com/collectifrusch/"
