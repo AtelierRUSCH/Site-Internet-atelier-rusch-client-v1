@@ -19,13 +19,17 @@ import {
   loadFilters,
   loadMembers,
   loadPartners,
-  loadThanks
+  loadThanks,
+  loadContact,
 } from './actions'
 
 class App extends Component {
   syncDatas = async () => {
     const thanks = await api.getThanks()
     store.dispatch(loadThanks(thanks))
+
+    const contact = await api.getContact()
+    store.dispatch(loadContact(contact))
 
     const partners = await api.getPartenaires()
     store.dispatch(loadPartners(partners))

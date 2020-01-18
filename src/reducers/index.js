@@ -5,6 +5,7 @@ import articleform from './articleform'
 import members from './members'
 import thanks from './thanks'
 import partners from './partners'
+import contact from './contact'
 
 const reducer = combineReducers({
   articles,
@@ -12,7 +13,8 @@ const reducer = combineReducers({
   articleform,
   members,
   thanks,
-  partners
+  partners,
+  contact,
 })
 
 export default reducer
