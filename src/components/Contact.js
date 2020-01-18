@@ -9,7 +9,7 @@ import store from '../store.js'
 const Contact = () => {
   const state = store.getState()
   const contact =
-    state.contact && state.contact.contact && state.contact.contact[0]
+    state.contact && state.contact.contact && state.contact.contact
 
   return (
     <div>
