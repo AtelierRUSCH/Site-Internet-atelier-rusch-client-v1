@@ -6,40 +6,56 @@ class AdminThankForm extends Component {
   state = {
     name: this.props.thank.name || '',
     url: this.props.thank.url || '',
-    errorPost: ''
+    errorPost: '',
   }
 
   handleChange = event => {
     const key = event.target.name
-    this.setState({ ...this.state.filtre, [key]: event.target.value, errorPost: '' })
+    this.setState({
+      ...this.state.filtre,
+      [key]: event.target.value,
+      errorPost: '',
+    })
   }
 
   handleSubmit = event => {
     event.preventDefault()
     if (this.state.name === '') {
       this.setState({ errorPost: '* Il faut renseigner un nom !' })
-    // } else if (this.state.url === '') {
-    //   this.setState({ errorPost: '* Il faut renseigner une URL !' })
+      // } else if (this.state.url === '') {
+      //   this.setState({ errorPost: '* Il faut renseigner une URL !' })
     } else {
-      console.log('coucou toi', this.state)
-      this.props.submitThank(this.state)
+      this.props
+        .submitThank(this.state)
         .then(() => navigate('/admin/equipe'))
         .then(() => window.location.reload())
     }
   }
 
-  render () {
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className='formTitle yellow'>Nouveau remerciement :</div>
-        <label>Nom :<br/>
-          <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+        <div className="formTitle yellow">Nouveau remerciement :</div>
+        <label>
+          Nom :<br />
+          <input
+            type="text"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleChange}
+          />
         </label>
-        <label>Lien :<br/>
-          <input type="text" name="url" value={this.state.url} onChange={this.handleChange} />
+        <label>
+          Lien :<br />
+          <input
+            type="text"
+            name="url"
+            value={this.state.url}
+            onChange={this.handleChange}
+          />
         </label>
-        <input className='submit' type="submit" value="Publier" />
-        <div className='errorPost'>{this.state.errorPost}</div>
+        <input className="submit" type="submit" value="Publier" />
+        <div className="errorPost">{this.state.errorPost}</div>
       </form>
     )
   }
