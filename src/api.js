@@ -38,6 +38,8 @@ const getEquipe = () => api('/equipe')
 
 const getThanks = () => api('/thanks')
 
+const getContact = () => api('/contact')
+
 const getPartenaires = () => api('/partenaires')
 
 const newPartenaire = partenaire => api.post('/partenaires', partenaire)
@@ -85,6 +87,7 @@ export default {
   getFilters,
   getEquipe,
   getThanks,
+  getContact,
   getPartenaires,
   newFilter,
   updateFilter,
