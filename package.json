@@ -13,7 +13,7 @@
     "react-html-parser": "^2.0.2",
     "react-icons": "^2.2.7",
     "react-responsive-carousel": "^3.1.40",
-    "react-scripts": "1.1.4",
+    "react-scripts": "3.3.0",
     "react-smooth-dnd": "^0.4.9",
     "redux-logger": "^3.0.6",
     "stylelint-config-standard": "^18.2.0"
@@ -32,7 +32,6 @@
     "sitemap": "mv public/sitemap.txt build/"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-node": "^6.0.1",
