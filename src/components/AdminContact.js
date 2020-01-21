@@ -13,81 +13,54 @@ const handleChange = (event, setContact, contact) => {
   setContact({
     ...contact,
     [key]: event.target.value,
-    errorPost: '',
   })
 }
 
 export const AdminEditContact = ({ contactData }) => {
   const [contact, setContact] = useState({
-    address: contactData.address || '',
-    additionalInfo: contactData.additionalInfo || '',
-    mail: contactData.mail || '',
-    phone: contactData.phone || '',
+    addresse: contactData.address || '',
+    indications: contactData.additionalInfo || '',
+    email: contactData.mail || '',
+    téléphone: contactData.phone || '',
     facebook: contactData.facebook || '',
     instagram: contactData.instagram || '',
     linkedin: contactData.linkedin || '',
-    errorPost: '',
   })
+
+  const [errorPost, setErrorPost] = useState('')
 
   return (
     <form onSubmit={() => handleSubmit(contact)}>
       <div className="formTitle yellow">Infos de contact :</div>
-      <TextInput
-        label="Adresse"
-        value={contact.address}
-        setContact={setContact}
-        contact={contact}
-      />
-      <TextInput
-        label="Info"
-        value={contact.additionalInfo}
-        setContact={setContact}
-        contact={contact}
-      />
-      <TextInput
-        label="Mail"
-        value={contact.mail}
-        setContact={setContact}
-        contact={contact}
-      />
-      <TextInput
-        label="Téléphones"
-        value={contact.phone}
-        setContact={setContact}
-        contact={contact}
-      />
-      <TextInput
-        label="Facebook"
-        value={contact.facebook}
-        setContact={setContact}
-        contact={contact}
-      />
-      <TextInput
-        label="Instagram"
-        value={contact.instagram}
-        setContact={setContact}
-        contact={contact}
-      />
-      <TextInput
-        label="Linkedin"
-        value={contact.linkedin}
-        setContact={setContact}
-        contact={contact}
-      />
+      {Object.entries(contact).map(([key, value]) => (
+        <Input
+          key={key}
+          type={value.includes('\n') ? 'textarea' : 'text'}
+          label={key}
+          value={value}
+          setContact={setContact}
+          contact={contact}
+        />
+      ))}
       <input className="submit" type="submit" value="Enregistrer" />
-      <div className="errorPost">{contact.errorPost}</div>
+      <div className="errorPost">{errorPost}</div>
     </form>
   )
 }
 
-const TextInput = ({ label, value, setContact, contact }) => (
-  <label>
-    {label} :<br />
-    <input
-      type="text"
-      name="name"
-      value={value}
-      onChange={e => handleChange(e, setContact, contact)}
-    />
-  </label>
-)
+const TextArea = ({ ...props }) => <textarea type="textarea" {...props} />
+const TextInput = ({ ...props }) => <input type="text" {...props} />
+
+const Input = ({ label, setContact, contact, type, ...props }) => {
+  const InputType = (type === 'textarea' && TextArea) || TextInput
+  return (
+    <label>
+      {label} :<br />
+      <InputType
+        name={label}
+        onChange={e => handleChange(e, setContact, contact)}
+        {...props}
+      />
+    </label>
+  )
+}
