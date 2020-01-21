@@ -16,35 +16,32 @@ import './css/Admin.css'
 
 const AdminHome = () => {
   return (
-    <div className='AdminHomeContainer'>
-      <div className='AdminHomeWelcome'>
+    <div className="AdminHomeContainer">
+      <div className="AdminHomeWelcome">
         <p style={{ margin: '0 5rem' }}>
-      Hello,<br/><br/>Te voici bien arrivé(e) sur l'espace Administrateur du site Rusch !<br/>
-      Cette interface permet de créer, modifier et supprimer des éléments.
+          Hello,
+          <br />
+          <br />
+          Te voici bien arrivé(e) sur l'espace Administrateur du site Rusch !
+          <br />
+          Cette interface permet de créer, modifier et supprimer des éléments.
         </p>
       </div>
-      <Link to='/admin/articles'>
-        <div className='AdminHomeLinkTo'>
-        Articles
-        </div>
+      <Link to="/admin/articles">
+        <div className="AdminHomeLinkTo">Articles</div>
       </Link>
 
-      <Link to='/admin/filtres'>
-        <div className='AdminHomeLinkTo'>
-        Filtres
-        </div>
+      <Link to="/admin/filtres">
+        <div className="AdminHomeLinkTo">Filtres</div>
       </Link>
 
-      <Link to='/admin/equipe'>
-        <div className='AdminHomeLinkTo'>
-        Equipe
-        </div>
+      <Link to="/admin/equipe">
+        <div className="AdminHomeLinkTo">Equipe</div>
       </Link>
 
-      <Link to='/admin/partenaires'>
-        <div className='AdminHomeLinkTo'>
-        Partenaires
-        </div>
+      <Link to="/admin/partenaires">
+        <div className="AdminHomeLinkTo">Partenaires</div>
+      </Link>
       </Link>
     </div>
   )
@@ -72,50 +69,69 @@ class Admin extends Component {
   }
 
   syncDatas = () => {
-    api.getArticles()
-      .then(articles => this.setState({ articles: articles }))
+    api.getArticles().then(articles => this.setState({ articles: articles }))
 
-    api.getFilters()
-      .then(filtres => this.setState({ filtres: filtres }))
+    api.getFilters().then(filtres => this.setState({ filtres: filtres }))
 
-    api.getEquipe()
-      .then(equipe => this.setState({ equipe: equipe }))
+    api.getEquipe().then(equipe => this.setState({ equipe: equipe }))
 
-    api.getThanks()
-      .then(thanks => this.setState({ thanks: thanks }))
+    api.getThanks().then(thanks => this.setState({ thanks: thanks }))
 
-    api.getPartenaires()
+    api
+      .getPartenaires()
       .then(partenaires => this.setState({ partenaires: partenaires }))
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.syncDatas()
   }
 
-  render () {
+  render() {
     if (!this.state.isAuth) {
-      return <AdminLogin path='' login={this.login} />
+      return <AdminLogin path="" login={this.login} />
     }
     return (
       <div className="App">
         <AdminNav logout={this.logout} />
-        <div className="spacer"></div>
+        <div className="spacer" />
         <Router>
-          <AdminHome path='/' />
-          <AdminArticles path='articles' articles={this.state.articles} />
-          <AdminNewArticle path='articles/new' />
-          <AdminEditArticle path='articles/:articleId' articles={this.state.articles} />
-          <AdminFiltres path='filtres' filtres={this.state.filtres}/>
-          <AdminEditFiltre path='filtres/:filtreId' filtres={this.state.filtres} />
-          <AdminNewFiltre path='filtres/new' />
-          <AdminMembers path='equipe' members={this.state.equipe} thanks={this.state.thanks}/>
-          <AdminEditMember path='equipe/:memberId' members={this.state.equipe} />
-          <AdminNewMember path='equipe/new' />
-          <AdminEditThank path='equipe/thanks/:thankId' thanks={this.state.thanks} />
-          <AdminNewThank path='equipe/thanks/new' />
-          <AdminPartenaires path='partenaires' partenaires={this.state.partenaires} />
-          <AdminNewPartenaire path='partenaires/new' />
-          <AdminEditPartenaire path='partenaires/:partenaireId' partenaires={this.state.partenaires} />
+          <AdminHome path="/" />
+          <AdminArticles path="articles" articles={this.state.articles} />
+          <AdminNewArticle path="articles/new" />
+          <AdminEditArticle
+            path="articles/:articleId"
+            articles={this.state.articles}
+          />
+          <AdminFiltres path="filtres" filtres={this.state.filtres} />
+          <AdminEditFiltre
+            path="filtres/:filtreId"
+            filtres={this.state.filtres}
+          />
+          <AdminNewFiltre path="filtres/new" />
+          <AdminMembers
+            path="equipe"
+            members={this.state.equipe}
+            thanks={this.state.thanks}
+          />
+          <AdminEditMember
+            path="equipe/:memberId"
+            members={this.state.equipe}
+          />
+          <AdminNewMember path="equipe/new" />
+          <AdminEditThank
+            path="equipe/thanks/:thankId"
+            thanks={this.state.thanks}
+          />
+          <AdminNewThank path="equipe/thanks/new" />
+          <AdminPartenaires
+            path="partenaires"
+            partenaires={this.state.partenaires}
+          />
+          <AdminNewPartenaire path="partenaires/new" />
+          <AdminEditPartenaire
+            path="partenaires/:partenaireId"
+            partenaires={this.state.partenaires}
+          />
         </Router>
       </div>
     )

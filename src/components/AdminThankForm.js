@@ -22,8 +22,6 @@ class AdminThankForm extends Component {
     event.preventDefault()
     if (this.state.name === '') {
       this.setState({ errorPost: '* Il faut renseigner un nom !' })
-      // } else if (this.state.url === '') {
-      //   this.setState({ errorPost: '* Il faut renseigner une URL !' })
     } else {
       this.props
         .submitThank(this.state)
