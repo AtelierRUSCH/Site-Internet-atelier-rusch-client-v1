@@ -22,15 +22,15 @@
 }
 
 .AdminHomeLinkTo {
-  width: 25vw;
-  height: 25vw;
+  width: 20vw;
+  height: 20vw;
   background-color: #fbd052;
   display: flex;
   justify-content: center;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.05);
   align-items: center;
   font-family: 'HeimatMono', monospace;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .AdminHomeLinkTo:hover {

@@ -9,6 +9,7 @@ import { AdminNewArticle, AdminEditArticle } from './AdminArticle.js'
 import { AdminNewFiltre, AdminEditFiltre } from './AdminFiltre.js'
 import { AdminNewMember, AdminEditMember } from './AdminMember.js'
 import { AdminNewThank, AdminEditThank } from './AdminThank.js'
+import { AdminEditContact } from './AdminContact.js'
 import AdminMembers from './AdminMembers.js'
 import { AdminNewPartenaire, AdminEditPartenaire } from './AdminPartenaire.js'
 import api from '../api'
@@ -42,6 +43,9 @@ const AdminHome = () => {
       <Link to="/admin/partenaires">
         <div className="AdminHomeLinkTo">Partenaires</div>
       </Link>
+
+      <Link to="/admin/contact">
+        <div className="AdminHomeLinkTo">Contact</div>
       </Link>
     </div>
   )
@@ -54,7 +58,8 @@ class Admin extends Component {
     equipe: [],
     thanks: [],
     partenaires: [],
-    isAuth: Boolean(window.localStorage.isAuth)
+    contact: {},
+    isAuth: Boolean(window.localStorage.isAuth),
   }
 
   login = () => {
@@ -80,6 +85,8 @@ class Admin extends Component {
     api
       .getPartenaires()
       .then(partenaires => this.setState({ partenaires: partenaires }))
+
+    api.getContact().then(contact => this.setState({ contact: contact }))
   }
 
   componentDidMount() {
@@ -132,6 +139,7 @@ class Admin extends Component {
             path="partenaires/:partenaireId"
             partenaires={this.state.partenaires}
           />
+          <AdminEditContact path="contact" contactData={this.state.contact} />
         </Router>
       </div>
     )

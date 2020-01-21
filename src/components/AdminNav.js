@@ -83,6 +83,18 @@ class AdminNav extends Component {
           >
             Partenaires
           </Link>
+          <Link
+            onClick={() => window.scrollTo(0, 0)}
+            className={
+              window.location.pathname.includes('/admin/contact')
+                ? 'NavBarLinkAdmin active'
+                : 'NavBarLinkAdmin'
+            }
+            to="contact"
+            label="Contact"
+          >
+            Contact
+          </Link>
           <LogOut className="LogOut" onClick={() => this.props.logout()} />
         </div>
       </div>
