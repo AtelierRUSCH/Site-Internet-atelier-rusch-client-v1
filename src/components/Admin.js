@@ -97,6 +97,7 @@ class Admin extends Component {
     if (!this.state.isAuth) {
       return <AdminLogin path="" login={this.login} />
     }
+
     return (
       <div className="App">
         <AdminNav logout={this.logout} />
@@ -139,7 +140,9 @@ class Admin extends Component {
             path="partenaires/:partenaireId"
             partenaires={this.state.partenaires}
           />
-          <AdminEditContact path="contact" contactData={this.state.contact} />
+          {Object.entries(this.state.contact).length && (
+            <AdminEditContact path="contact" contactData={this.state.contact} />
+          )}
         </Router>
       </div>
     )
