@@ -1,7 +1,9 @@
 const defaultUrl = 'http://localhost:5000'
 const hostUrl = process.env.REACT_APP_API_URL || defaultUrl
 if (!process.env.REACT_APP_API_URL) {
-  console.warn(`'REACT_APP_API_URL' environment variable is not set! -> fallback to default url: '${defaultUrl}'`)
+  console.warn(
+    `'REACT_APP_API_URL' environment variable is not set! -> fallback to default url: '${defaultUrl}'`,
+  )
 }
 
 const api = async (path, opts) => {
@@ -17,14 +19,15 @@ const api = async (path, opts) => {
   }
 }
 
-const methodMan = method => (path, body) => api(path, {
-  method,
-  body: JSON.stringify(body),
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  'credentials': 'include'
-})
+const methodMan = method => (path, body) =>
+  api(path, {
+    method,
+    body: JSON.stringify(body),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  })
 
 api.post = methodMan('post')
 api.put = methodMan('put')
@@ -74,9 +77,11 @@ const updateThank = (id, thank) => api.put(`/thanks/${id}`, thank)
 
 const deleteThank = (id, thank) => api.delete(`/thanks/${id}`, thank)
 
+const updateContact = contact => api.put('/contact', contact)
+
 // credentials routes
 
-const loginUser = (user) => api.post('/sign-in', user)
+const loginUser = user => api.post('/sign-in', user)
 
 const logoutUser = () => api('/sign-out')
 
@@ -105,5 +110,6 @@ export default {
   updateThank,
   deleteThank,
   loginUser,
-  logoutUser
+  logoutUser,
+  updateContact,
 }
