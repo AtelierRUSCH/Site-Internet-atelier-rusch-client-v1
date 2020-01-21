@@ -47,6 +47,7 @@ export const AdminEditContact = ({ contactData }) => {
             (i === 3 && 'Téléphone') ||
             key
           }
+          name={key}
           value={value}
           setContact={setContact}
           contact={contact}
@@ -67,7 +68,6 @@ const Input = ({ label, setContact, contact, type, ...props }) => {
     <label>
       {label} :<br />
       <InputType
-        name={label}
         onChange={e => handleChange(e, setContact, contact)}
         {...props}
       />
