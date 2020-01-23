@@ -65,7 +65,7 @@ const TextInput = ({ ...props }) => <input type="text" {...props} />
 const Input = ({ label, setContact, contact, type, ...props }) => {
   const InputType = (type === 'textarea' && TextArea) || TextInput
   return (
-    <label>
+    <label style={{ textTransform: 'capitalize' }}>
       {label} :<br />
       <InputType
         onChange={e => handleChange(e, setContact, contact)}
