@@ -23,10 +23,6 @@ button {
   background-color: transparent;
 }
 
-label {
-  text-transform: capitalize;
-}
-
 .spacer {
   width: 100vw;
   height: 65px;
