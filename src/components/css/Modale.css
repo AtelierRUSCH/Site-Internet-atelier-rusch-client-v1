@@ -56,13 +56,10 @@
 .ModaleBlockPreview img,
 .ModaleBlockPreview iframe {
   width: 50vw;
+  height: 30vw;
   padding-top: 3rem;
 }
 
-/*.ModaleBlockPreview img {
-  width: 50vw;
-}
-*/
 .ModaleBlockPreview h2 {
   padding: 0;
   margin: 5rem 2rem 0 7rem;
