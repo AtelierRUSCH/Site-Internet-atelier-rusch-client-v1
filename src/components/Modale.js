@@ -94,14 +94,12 @@ const Modale = ({ article, setFullScreen }) => {
     ? [articleSuggestedChosen, ...articlesSuggested.slice(0, 1)]
     : articlesSuggested.slice(0, 2)
 
-  const getArticlePartners = article.partners
-
   const getPartners = array =>
     state.partners.allPartners.filter(
-      el => el.name === array.find(elem => elem === el.name)
+      el => el.name === array.find(elem => elem === el.name),
     )
 
-  const partners = getPartners(getArticlePartners).map(partner => (
+  const partners = getPartners(article.partners).map(partner => (
     <Partenaire key={partner.id} partner={partner} />
   ))
 
@@ -138,7 +136,7 @@ const Modale = ({ article, setFullScreen }) => {
       <div
         className="ModalePic"
         style={{
-          background: `center / cover no-repeat url(${article.headerImage})`
+          background: `center / cover no-repeat url(${article.headerImage})`,
         }}
       >
         <div className="ModaleHeader FilterBlack">
@@ -150,10 +148,8 @@ const Modale = ({ article, setFullScreen }) => {
       <div className="contentBlock">
         <div className="recapBlockFixed">
           <h6 className="recapBlockTitle">{article.title}</h6>
-          {article.section === 'lab' ? <h6>{article.shortDescription}</h6> : ''}
-          {article.client.length === 0 ? (
-            ''
-          ) : (
+          <h6>{article.shortDescription}</h6>
+          {article.client && (
             <h6 style={{ marginTop: '1rem' }}>
               <u>Client</u> : {article.client}
             </h6>
@@ -161,16 +157,12 @@ const Modale = ({ article, setFullScreen }) => {
           <h6 style={{ marginTop: '1rem' }}>
             <u>Date</u> : {article.date}
           </h6>
-          {article.place.length === 0 ? (
-            ''
-          ) : (
+          {article.place && (
             <h6 style={{ marginTop: '1rem' }}>
               <u>Lieu</u> : {article.place}
             </h6>
           )}
-          {article.type.length === 0 ? (
-            ''
-          ) : (
+          {article.type && (
             <h6 style={{ marginTop: '1rem' }}>
               <u>Type</u> : {article.type}
             </h6>
@@ -181,24 +173,16 @@ const Modale = ({ article, setFullScreen }) => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >
             {content}
           </div>
-          {article.partners.length === 0 ? (
-            ''
-          ) : (
+          {article.partners.length !== 0 && (
             <h4>Nos partenaires sur ce projet :</h4>
           )}
-          {!partners ? (
-            ''
-          ) : (
-            <div className="PartenairesContainer">{partners}</div>
-          )}
-          {window.location.pathname.includes('admin')
-            ? ''
-            : articlesSuggestions}
+          {partners && <div className="PartenairesContainer">{partners}</div>}
+          {!window.location.pathname.includes('admin') && articlesSuggestions}
         </div>
       </div>
     </div>
