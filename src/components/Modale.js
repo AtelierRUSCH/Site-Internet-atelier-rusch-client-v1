@@ -8,6 +8,12 @@ import RedirectingBlockToAllArticles from './RedirectingBlockToAllArticles.js'
 import ReactHtmlParser from 'react-html-parser'
 
 const generateValidUrl = value => {
+  // for vimeo videos
+  if (value.includes('vimeo')) {
+    const vimeoId = value.split('/').slice(-1)
+    return `https://player.vimeo.com/video/${vimeoId}?color=fbd052`
+  }
+  // for youtube videos
   if (value.includes('&')) {
     const splitUrl = value.split('&').slice()
     const validUrl = splitUrl[0].replace('watch?v=', 'embed/')
@@ -19,6 +25,7 @@ const generateValidUrl = value => {
   } else if (!value.includes('youtube')) {
     return `https://youtube.com/embed/${value}`
   }
+  return value
 }
 
 const toHTML = {
@@ -38,14 +45,12 @@ const toHTML = {
         <iframe
           title={`video-${i}`}
           key={i}
-          width="425"
-          height="344"
           src={generateValidUrl(videoValue)}
-          allowfullscreen="allowfullscreen"
+          allowFullScreen="allowfullscreen"
           alt=""
-          frameborder="0"
+          frameBorder="0"
         />
-      ))
+      )),
 }
 
 const Element = ({ element }) => toHTML[element.type](element)
