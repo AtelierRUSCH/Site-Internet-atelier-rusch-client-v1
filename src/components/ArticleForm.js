@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import Modale from './Modale.js'
 import { Container, Draggable } from 'react-smooth-dnd'
 import './css/ArticleForm.css'
@@ -229,6 +229,43 @@ const moveElement = (array, fromIndex, toIndex) => {
   const popedArray = array.filter((_, index) => index !== fromIndex)
 
   return [...popedArray.slice(0, toIndex), elem, ...popedArray.slice(toIndex)]
+}
+
+const ImagesLayout = ({}) => {
+  const [open, setOpen] = useState(false)
+  const [url, setUrl] = useState()
+
+  return (
+    <div>
+      <div className="formTitle yellow">Nouvelle composition d'image :</div>
+      <div
+        style={{
+          width: '35vw',
+          height: '300px',
+          background: url
+            ? `center / cover no-repeat url(${url})`
+            : 'hsl(0, 0%, 96%)',
+          marginBottom: '30px',
+          cursor: open ? `default` : `pointer`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+        onClick={() => !open && setOpen(true)}
+      >
+        {open ? (
+          <input
+            style={{ width: '50%', margin: 0 }}
+            type="text"
+            placeholder="Paste the image URL"
+            onChange={e => setUrl(e.target.value)}
+          />
+        ) : (
+          `+ Ajouter une image`
+        )}
+      </div>
+    </div>
+  )
 }
 
 class ArticleForm extends Component {
@@ -480,6 +517,8 @@ class ArticleForm extends Component {
           <div className="item-left">
             <div style={{ marginTop: '15px' }}>
               <form onSubmit={this.handleSubmit}>
+                <ImagesLayout />
+
                 <div className="formTitle yellow">Nouvel article :</div>
                 <label>
                   Titre de l'article :<br />
