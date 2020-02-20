@@ -33,7 +33,7 @@ const freshArticle = {
   content: [],
   partners: [],
   isDraft: false,
-  suggestion: 0
+  suggestion: 0,
 }
 
 const H2 = ({ element, children, ...rest }) => {
@@ -61,7 +61,7 @@ class MyEditor extends React.Component {
     this.state = {
       editorState: EditorState.createWithContent(contentState),
       value: props.element.value,
-      name: props.name
+      name: props.name,
     }
     this.onChangeHandle = this.props.onChange.bind(this)
     this.setDomEditorRef = ref => (this.domEditor = ref)
@@ -70,7 +70,7 @@ class MyEditor extends React.Component {
   onChange = editorState => {
     this.setState({
       editorState,
-      value: stateToHTML(editorState.getCurrentContent())
+      value: stateToHTML(editorState.getCurrentContent()),
     })
     this.onChangeHandle({ name: this.state.name, value: this.state.value })
   }
@@ -78,7 +78,7 @@ class MyEditor extends React.Component {
   _onClick = e => {
     e.preventDefault()
     this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, e.target.name)
+      RichUtils.toggleInlineStyle(this.state.editorState, e.target.name),
     )
   }
 
@@ -219,7 +219,7 @@ const toInput = {
   caption: props => <Caption {...props} />,
   abstract: props => <Abstract {...props} />,
   imgs: props => <Imgs {...props} />,
-  video: props => <Video {...props} />
+  video: props => <Video {...props} />,
 }
 
 const Element = props => toInput[props.element.type](props)
@@ -235,7 +235,7 @@ class ArticleForm extends Component {
   state = {
     article: this.props.article || freshArticle,
     errorPost: '',
-    fullScreen: false
+    fullScreen: false,
   }
 
   handleDnd = ({ removedIndex: fromIndex, addedIndex: toIndex }) => {
@@ -244,7 +244,7 @@ class ArticleForm extends Component {
 
     const updatedArticle = {
       ...this.state.article,
-      content: reorderedContent
+      content: reorderedContent,
     }
     this.setState({ article: updatedArticle })
   }
@@ -262,34 +262,34 @@ class ArticleForm extends Component {
 
       article = {
         ...this.state.article,
-        content: content
+        content: content,
       }
     } else if (key.startsWith('hasStar')) {
       article = {
         ...this.state.article,
-        hasStar: this.state.article.hasStar === '1' ? '0' : '1'
+        hasStar: this.state.article.hasStar === '1' ? '0' : '1',
       }
     } else if (key.startsWith('hasImage')) {
       article = {
         ...this.state.article,
-        hasImage: this.state.article.hasImage === '1' ? '0' : '1'
+        hasImage: this.state.article.hasImage === '1' ? '0' : '1',
       }
     } else if (key.startsWith('section')) {
       article = {
         ...this.state.article,
         section: value,
-        tags: []
+        tags: [],
       }
     } else if (key.startsWith('tags')) {
       if (this.state.article.tags.includes(value)) {
         article = {
           ...this.state.article,
-          tags: this.state.article.tags.filter(tag => tag !== value)
+          tags: this.state.article.tags.filter(tag => tag !== value),
         }
       } else {
         article = {
           ...this.state.article,
-          tags: [...this.state.article.tags, value]
+          tags: [...this.state.article.tags, value],
         }
       }
     } else if (key.startsWith('partners')) {
@@ -297,19 +297,19 @@ class ArticleForm extends Component {
         article = {
           ...this.state.article,
           partners: this.state.article.partners.filter(
-            partner => partner !== value
-          )
+            partner => partner !== value,
+          ),
         }
       } else {
         article = {
           ...this.state.article,
-          partners: [...this.state.article.partners, value]
+          partners: [...this.state.article.partners, value],
         }
       }
     } else {
       article = {
         ...this.state.article,
-        [key]: value
+        [key]: value,
       }
     }
     this.setState({ article, errorPost: '' })
@@ -323,7 +323,7 @@ class ArticleForm extends Component {
       this.setState({ errorPost: '* Il faut renseigner une description !' })
     } else if (this.state.article.headerImage === '') {
       this.setState({
-        errorPost: '* Il faut ajouter une image de couverture !'
+        errorPost: '* Il faut ajouter une image de couverture !',
       })
     } else if (this.state.article.section === '') {
       this.setState({ errorPost: '* Il faut sélectionner une section !' })
@@ -352,12 +352,12 @@ class ArticleForm extends Component {
       caption: { type: 'caption', value: '' },
       abstract: { type: 'abstract', value: '' },
       imgs: { type: 'imgs', value: '' },
-      video: { type: 'video', value: '' }
+      video: { type: 'video', value: '' },
     }
 
     const article = {
       ...this.state.article,
-      content: [...this.state.article.content, basicContentElement[type]]
+      content: [...this.state.article.content, basicContentElement[type]],
     }
     this.setState({ article })
   }
@@ -366,8 +366,8 @@ class ArticleForm extends Component {
     const article = {
       ...this.state.article,
       content: this.state.article.content.filter(
-        index => index !== this.state.article.content[i]
-      )
+        index => index !== this.state.article.content[i],
+      ),
     }
     this.setState({ article })
   }
@@ -382,7 +382,7 @@ class ArticleForm extends Component {
       { type: 'caption', value: 'Légende' },
       { type: 'abstract', value: 'Abstract' },
       { type: 'imgs', value: 'Images' },
-      { type: 'video', value: 'Vidéo' }
+      { type: 'video', value: 'Vidéo' },
     ].map((button, i) => (
       <input
         type="button"
@@ -625,7 +625,7 @@ class ArticleForm extends Component {
                       lineHeight: '0.5rem',
                       fontSize: '2.7rem',
                       padding: '0',
-                      margin: '-7px 0 0 12px'
+                      margin: '-7px 0 0 12px',
                     }}
                     type="button"
                     name="hasImage"
@@ -647,7 +647,7 @@ class ArticleForm extends Component {
                       cursor: 'pointer',
                       fontSize: '1.1rem',
                       padding: '0',
-                      margin: '0 0 0 10px'
+                      margin: '0 0 0 10px',
                     }}
                     type="button"
                     name="hasStar"
@@ -673,7 +673,7 @@ class ArticleForm extends Component {
                   id="buttons"
                   style={{
                     backgroundColor: 'transparent',
-                    marginBottom: '20px'
+                    marginBottom: '20px',
                   }}
                 >
                   {buttons}
@@ -700,7 +700,7 @@ class ArticleForm extends Component {
               top: 0,
               right: 0,
               overflow: 'auto',
-              zIndex: this.state.fullScreen ? 11000 : 5000
+              zIndex: this.state.fullScreen ? 11000 : 5000,
             }}
             className={
               this.state.fullScreen
@@ -713,7 +713,7 @@ class ArticleForm extends Component {
                 this.setState({ fullScreen: !this.state.fullScreen })
               }
               style={{
-                width: this.state.fullScreen ? '100%' : '50%'
+                width: this.state.fullScreen ? '100%' : '50%',
               }}
               className="fullScreenBanner"
             >
