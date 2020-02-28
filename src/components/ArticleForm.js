@@ -213,8 +213,15 @@ const Video = ({ element, children, ...rest }) => {
   )
 }
 
-const Composition = ({ element, children, state, test, name, ...rest }) => {
-  const [images, setImages] = useState({})
+const Composition = ({
+  element,
+  children,
+  state,
+  handleChange,
+  name,
+  ...rest
+}) => {
+  const [images, setImages] = useState(element.value)
   return (
     <div>
       <div className="draggableElement">
@@ -230,12 +237,10 @@ const Composition = ({ element, children, state, test, name, ...rest }) => {
       />
       <div
         onClick={() => {
-          console.log(state.article.content)
-          test(name, images)
-          console.log(state.article.content)
+          handleChange(name, images)
         }}
       >
-        Test
+        Enregistrer
       </div>
     </div>
   )
@@ -289,8 +294,6 @@ class ArticleForm extends Component {
 
       const content = [...this.state.article.content]
       content[index].value = value
-
-      console.log('im here')
 
       article = {
         ...this.state.article,
@@ -434,7 +437,7 @@ class ArticleForm extends Component {
       >
         <Element
           state={this.state}
-          test={this.handleChange}
+          handleChange={this.handleChange}
           key={i}
           name={`content-${i}`}
           element={element}

@@ -8,7 +8,6 @@ import React, {
 import './Layout.css'
 
 export const Layout = ({ width, name, images, setImages, ...props }) => {
-  // const [images, setImages] = useState({})
   const totalLength = Object.values(images).length
 
   const layoutRef = useRef()
