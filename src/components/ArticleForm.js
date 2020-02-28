@@ -221,7 +221,13 @@ const Composition = ({
   name,
   ...rest
 }) => {
-  const [images, setImages] = useState(element.value)
+  const [images, setImages] = useState(element.value.images || {})
+  const [justification, setJustification] = useState(
+    element.value.justification || 'flex-start',
+  )
+  const [margins, setMargins] = useState(element.value.margins || false)
+  const [borders, setBorders] = useState(element.value.borders || false)
+
   return (
     <div>
       <div className="draggableElement">
@@ -233,11 +239,22 @@ const Composition = ({
         name={name}
         images={images}
         setImages={setImages}
+        justification={justification}
+        setJustification={setJustification}
+        margins={margins}
+        setMargins={setMargins}
+        borders={borders}
+        setBorders={setBorders}
         {...rest}
       />
       <div
         onClick={() => {
-          handleChange(name, images)
+          handleChange(name, {
+            images,
+            justification,
+            borders,
+            margins,
+          })
         }}
       >
         Enregistrer
