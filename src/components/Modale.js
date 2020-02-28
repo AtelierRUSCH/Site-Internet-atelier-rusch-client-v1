@@ -3,7 +3,7 @@ import './css/Modale.css'
 import { Link, navigate } from '@reach/router'
 import store from '../store.js'
 import Partenaire from './Partenaire.js'
-import { Layout } from './Layout.js'
+import { LayoutRender } from './Layout.js'
 import ArticleThumbnail from './ArticleThumbnail.js'
 import RedirectingBlockToAllArticles from './RedirectingBlockToAllArticles.js'
 import ReactHtmlParser from 'react-html-parser'
@@ -52,7 +52,15 @@ const toHTML = {
           frameBorder="0"
         />
       )),
-  composition: ({ value }) => <Layout width="100%" images={value} />,
+  composition: ({ value }) => (
+    <LayoutRender
+      width="100%"
+      images={value.images}
+      justification={value.justification}
+      borders={value.borders}
+      margins={value.borders}
+    />
+  ),
 }
 
 const Element = ({ element }) => toHTML[element.type](element)

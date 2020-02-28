@@ -7,14 +7,22 @@ import React, {
 } from 'react'
 import './Layout.css'
 
-export const Layout = ({ width, name, images, setImages, ...props }) => {
+export const Layout = ({
+  width,
+  name,
+  images,
+  setImages,
+  justification,
+  setJustification,
+  margins,
+  setMargins,
+  borders,
+  setBorders,
+  ...props
+}) => {
   const totalLength = Object.values(images).length
 
   const layoutRef = useRef()
-
-  const [justification, setJustification] = useState('flex-start')
-  const [margins, setMargins] = useState()
-  const [borders, setBorders] = useState()
 
   const displayedImages = Object.entries(images).filter(
     ([key, image]) => image.display,
@@ -399,3 +407,36 @@ const RemovedImages = ({ removedImages, images, setImages, layoutRef }) => (
     </div>
   </div>
 )
+
+export const LayoutRender = ({
+  images,
+  justification,
+  margins,
+  borders,
+  width,
+  ...props
+}) => {
+  return (
+    <div
+      className="layout"
+      style={{
+        justifyContent: justification,
+        width: width,
+      }}
+    >
+      {Object.values(images).map((image, i) => (
+        <div
+          className={`image`}
+          style={{
+            background: `center / cover no-repeat ${`url(${image.url})`}`,
+            width: '50%',
+            height: '300px',
+            margin: margins ? '0.35rem' : 0,
+            border: borders ? 'solid 1px hsl(0, 0%, 40%)' : 'none',
+          }}
+          {...props}
+        />
+      ))}
+    </div>
+  )
+}
