@@ -7,6 +7,7 @@ import store from '../store.js'
 import { Editor, EditorState, RichUtils } from 'draft-js'
 import { stateToHTML } from 'draft-js-export-html'
 import { stateFromHTML } from 'draft-js-import-html'
+import { Layout } from './Layout.js'
 
 const formatDate = () => {
   const today = new Date(Date.now())
@@ -231,7 +232,7 @@ const moveElement = (array, fromIndex, toIndex) => {
   return [...popedArray.slice(0, toIndex), elem, ...popedArray.slice(toIndex)]
 }
 
-const Layout = ({}) => {
+const NewLayout = ({}) => {
   return (
     <div>
       <div className="formTitle yellow">Nouvelle composition d'image :</div>
@@ -245,52 +246,8 @@ const Layout = ({}) => {
           flexWrap: 'wrap',
         }}
       >
-        {[...Array(4)].map((e, i) => (
-          <LayoutImage i={i} key={i} />
-        ))}
+        <Layout width="35vw" />
       </div>
-    </div>
-  )
-}
-
-const LayoutImage = ({ i }) => {
-  const [open, setOpen] = useState(false)
-  const [url, setUrl] = useState()
-  const [alignSelf, setAlignSelf] = useState()
-
-  return (
-    <div
-      style={{
-        width: '50%',
-        height: '250px',
-        background: url
-          ? `center / cover no-repeat url(${url})`
-          : `hsl(0, 0%, ${90 + i * 2}%)`,
-        cursor: open ? `default` : `pointer`,
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        overflow: 'auto',
-        resize: 'both',
-        alignSelf: alignSelf,
-      }}
-      onClick={() => !open && setOpen(true)}
-    >
-      {open ? (
-        <Fragment>
-          <div onClick={() => setAlignSelf('flex-start')}>Up</div>
-          <input
-            style={{ width: '50%', margin: 0 }}
-            type="text"
-            placeholder="Paste the image URL"
-            onChange={e => setUrl(e.target.value)}
-          />
-          <div onClick={() => setAlignSelf('flex-end')}>Down</div>
-        </Fragment>
-      ) : (
-        `+ Ajouter une image`
-      )}
     </div>
   )
 }
@@ -544,7 +501,7 @@ class ArticleForm extends Component {
           <div className="item-left">
             <div style={{ marginTop: '15px' }}>
               <form onSubmit={this.handleSubmit}>
-                <Layout />
+                <NewLayout />
 
                 <div className="formTitle yellow">Nouvel article :</div>
                 <label>
