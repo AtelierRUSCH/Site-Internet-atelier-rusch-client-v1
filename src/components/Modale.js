@@ -52,10 +52,7 @@ const toHTML = {
           frameBorder="0"
         />
       )),
-  composition: ({ value }) => {
-    // console.log(value)
-    return <Layout images={value}>compo</Layout>
-  },
+  composition: ({ value }) => <Layout width="100%" images={value} />,
 }
 
 const Element = ({ element }) => toHTML[element.type](element)
