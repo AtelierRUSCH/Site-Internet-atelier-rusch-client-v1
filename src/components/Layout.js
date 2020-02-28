@@ -7,8 +7,8 @@ import React, {
 } from 'react'
 import './Layout.css'
 
-export const Layout = ({ width }) => {
-  const [images, setImages] = useState({})
+export const Layout = ({ width, name, images, setImages, ...props }) => {
+  // const [images, setImages] = useState({})
   const totalLength = Object.values(images).length
 
   const layoutRef = useRef()
@@ -28,7 +28,12 @@ export const Layout = ({ width }) => {
   const { length } = displayedImages
 
   return (
-    <div style={{ width: width }}>
+    <div
+      style={{ width: width, marginTop: '10px' }}
+      className="field"
+      name={name}
+      {...props}
+    >
       <LayoutButtons
         length={length}
         margins={margins}
