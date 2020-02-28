@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+}
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.layout input {
+  width: 50%;
+  margin: 0;
+}
+
+.image {
+  position: relative;
+  min-width: 100px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.75rem;
+}
+
+.handler {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+
+.handler-corner {
+  width: 15px;
+  height: 15px;
+  right: 0;
+  bottom: 0;
+  cursor: nwse-resize;
+  background: #fbd052;
+}
+
+.handler-down {
+  width: 50px;
+  height: 7px;
+  bottom: 0;
+  align-self: center;
+  cursor: ns-resize;
+  flex-direction: column;
+}
+
+.handler-item-down {
+  background: #fbd052;
+  height: 1px;
+}
+
+.handler-right {
+  width: 7px;
+  height: 50px;
+  right: 0;
+  top: calc(50% - 25px);
+  cursor: ew-resize;
+}
+
+.handler-item-right {
+  background: #fbd052;
+  width: 1px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 2px;
+  font-family: 'IBMPlex', monospace;
+  font-size: 11px;
+  transition: box-shadow 0.2s ease-out;
+  height: 35px;
+  padding: 0 10px;
+  color: #2b2b2b;
+}
+
+.add-button {
+  width: 100%;
+  z-index: 1;
+  border: solid 1px darkgrey;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.add-button:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.remove-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.put-back-button {
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  pointer-events: auto;
+  color: white;
+}
+
+.layout-buttons {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.layout-button {
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.15);
+}
+
+.layout-button:hover {
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.justify-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 55%;
+}
+
+.displayed {
+  flex-direction: column;
+}
+
+.removed-block {
+  margin-top: 4rem;
+}
+
+.removed-images {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.removed {
+  border-radius: 50%;
+  filter: grayscale(100%);
+  pointer-events: none;
+}
+
+.removed:hover {
+  filter: grayscale(0%);
+  background-color: transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+svg {
+  cursor: pointer;
+}
+
+.svg-path {
+  transition: all 0.2s ease-in-out;
+}
+
+svg:hover .svg-path {
+  stroke: #fbd052;
+}
