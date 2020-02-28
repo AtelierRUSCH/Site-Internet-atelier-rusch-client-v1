@@ -190,10 +190,12 @@ const Image = ({
   const resize = useCallback(
     e => {
       if (hasMouseDown.right) {
-        ref.current.style.width = e.pageX - ref.current.offsetLeft + 5 + 'px'
+        ref.current.style.width =
+          e.pageX - ref.current.getBoundingClientRect().left + 5 + 'px'
       }
       if (hasMouseDown.down) {
-        ref.current.style.height = e.pageY - ref.current.offsetTop + 5 + 'px'
+        ref.current.style.height =
+          e.pageY - ref.current.getBoundingClientRect().top + 5 + 'px'
       }
     },
     [hasMouseDown.right, hasMouseDown.down],
