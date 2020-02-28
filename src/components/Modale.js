@@ -3,6 +3,7 @@ import './css/Modale.css'
 import { Link, navigate } from '@reach/router'
 import store from '../store.js'
 import Partenaire from './Partenaire.js'
+import { Layout } from './Layout.js'
 import ArticleThumbnail from './ArticleThumbnail.js'
 import RedirectingBlockToAllArticles from './RedirectingBlockToAllArticles.js'
 import ReactHtmlParser from 'react-html-parser'
@@ -51,6 +52,10 @@ const toHTML = {
           frameBorder="0"
         />
       )),
+  composition: ({ value }) => {
+    // console.log(value)
+    return <Layout images={value}>compo</Layout>
+  },
 }
 
 const Element = ({ element }) => toHTML[element.type](element)

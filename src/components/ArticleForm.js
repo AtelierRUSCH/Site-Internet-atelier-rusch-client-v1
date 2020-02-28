@@ -213,6 +213,34 @@ const Video = ({ element, children, ...rest }) => {
   )
 }
 
+const Composition = ({ element, children, state, test, name, ...rest }) => {
+  const [images, setImages] = useState({})
+  return (
+    <div>
+      <div className="draggableElement">
+        <label className="moveCursor">Ajouter une composition d'images :</label>
+        {children}
+      </div>
+      <Layout
+        width="35vw"
+        name={name}
+        images={images}
+        setImages={setImages}
+        {...rest}
+      />
+      <div
+        onClick={() => {
+          console.log(state.article.content)
+          test(name, images)
+          console.log(state.article.content)
+        }}
+      >
+        Test
+      </div>
+    </div>
+  )
+}
+
 const toInput = {
   h2: props => <H2 {...props} />,
   p: props => <MyEditor {...props} />,
@@ -221,6 +249,7 @@ const toInput = {
   abstract: props => <Abstract {...props} />,
   imgs: props => <Imgs {...props} />,
   video: props => <Video {...props} />,
+  composition: props => <Composition {...props} />,
 }
 
 const Element = props => toInput[props.element.type](props)
@@ -230,26 +259,6 @@ const moveElement = (array, fromIndex, toIndex) => {
   const popedArray = array.filter((_, index) => index !== fromIndex)
 
   return [...popedArray.slice(0, toIndex), elem, ...popedArray.slice(toIndex)]
-}
-
-const NewLayout = ({}) => {
-  return (
-    <div>
-      <div className="formTitle yellow">Nouvelle composition d'image :</div>
-      <div
-        style={{
-          width: '35vw',
-          marginBottom: '50px',
-          display: 'flex',
-          alignItems: 'last',
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-        }}
-      >
-        <Layout width="35vw" />
-      </div>
-    </div>
-  )
 }
 
 class ArticleForm extends Component {
@@ -280,6 +289,8 @@ class ArticleForm extends Component {
 
       const content = [...this.state.article.content]
       content[index].value = value
+
+      console.log('im here')
 
       article = {
         ...this.state.article,
@@ -374,6 +385,7 @@ class ArticleForm extends Component {
       abstract: { type: 'abstract', value: '' },
       imgs: { type: 'imgs', value: '' },
       video: { type: 'video', value: '' },
+      composition: { type: 'composition', value: '' },
     }
 
     const article = {
@@ -404,6 +416,7 @@ class ArticleForm extends Component {
       { type: 'abstract', value: 'Abstract' },
       { type: 'imgs', value: 'Images' },
       { type: 'video', value: 'Vidéo' },
+      { type: 'composition', value: `Composition d'images` },
     ].map((button, i) => (
       <input
         type="button"
@@ -420,6 +433,8 @@ class ArticleForm extends Component {
         className="onDrop"
       >
         <Element
+          state={this.state}
+          test={this.handleChange}
           key={i}
           name={`content-${i}`}
           element={element}
@@ -501,8 +516,6 @@ class ArticleForm extends Component {
           <div className="item-left">
             <div style={{ marginTop: '15px' }}>
               <form onSubmit={this.handleSubmit}>
-                <NewLayout />
-
                 <div className="formTitle yellow">Nouvel article :</div>
                 <label>
                   Titre de l'article :<br />
