@@ -245,20 +245,16 @@ const Composition = ({
         setMargins={setMargins}
         borders={borders}
         setBorders={setBorders}
-        {...rest}
-      />
-      <div
-        onClick={() => {
+        handleChange={() =>
           handleChange(name, {
             images,
             justification,
             borders,
             margins,
           })
-        }}
-      >
-        Enregistrer
-      </div>
+        }
+        {...rest}
+      />
     </div>
   )
 }
