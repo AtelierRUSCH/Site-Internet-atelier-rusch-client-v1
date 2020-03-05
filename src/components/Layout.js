@@ -18,6 +18,7 @@ export const Layout = ({
   setMargins,
   borders,
   setBorders,
+  handleChange,
   ...props
 }) => {
   const totalLength = Object.values(images).length
@@ -36,7 +37,7 @@ export const Layout = ({
 
   return (
     <div
-      style={{ width: width, marginTop: '10px' }}
+      style={{ width: width, marginTop: '10px', marginBottom: '40px' }}
       className="field"
       name={name}
       {...props}
@@ -70,6 +71,7 @@ export const Layout = ({
             length={length}
             margins={margins}
             borders={borders}
+            layoutRef={layoutRef}
             i={i}
           />
         ))}
@@ -77,17 +79,29 @@ export const Layout = ({
 
       <AddButton
         length={length}
-        onClick={() =>
+        onClick={() => {
+          const layout = layoutRef.current.getBoundingClientRect()
+          const layoutWidth = layout.width - 2
+          const layoutHeight = layout.height - 2
           setImages({
             ...images,
             [`img${totalLength}`]: {
               url: '',
               id: totalLength,
               display: true,
+              imageWidth: layoutWidth,
+              imageHeight: 300,
             },
+            layoutWidth,
+            layoutHeight: layoutHeight + 300,
+            ratio: !length
+              ? layoutWidth / 300
+              : layoutWidth / (layoutHeight + 300),
           })
-        }
+        }}
       />
+
+      <SaveButton length={length} onClick={handleChange} />
 
       {removedImages.length > 0 && (
         <RemovedImages
@@ -196,16 +210,64 @@ const Image = ({
 
   const resize = useCallback(
     e => {
-      if (hasMouseDown.right) {
-        ref.current.style.width =
-          e.pageX - ref.current.getBoundingClientRect().left + 5 + 'px'
+      const layout = layoutRef.current.getBoundingClientRect()
+      const layoutWidth = layout.width - 2
+      const layoutHeight = layout.height - 2
+
+      const imageWidth = e.pageX - ref.current.getBoundingClientRect().left + 5
+
+      const imageHeight = e.pageY - ref.current.getBoundingClientRect().top + 5
+
+      const ratio = (length && layoutWidth / layoutHeight) || 1
+
+      if (hasMouseDown.both) {
+        ref.current.style.width = imageWidth + 'px'
+        ref.current.style.height = imageHeight + 'px'
+        setImages({
+          ...images,
+          [keyName]: {
+            ...image,
+            imageWidth,
+            imageHeight,
+          },
+          layoutHeight,
+          ratio: ratio,
+        })
       }
+
+      if (hasMouseDown.right) {
+        ref.current.style.width = imageWidth + 'px'
+        setImages({
+          ...images,
+          [keyName]: {
+            ...image,
+            imageWidth,
+          },
+          layoutHeight,
+          ratio: ratio,
+        })
+      }
+
       if (hasMouseDown.down) {
-        ref.current.style.height =
-          e.pageY - ref.current.getBoundingClientRect().top + 5 + 'px'
+        ref.current.style.height = imageHeight + 'px'
+        setImages({
+          ...images,
+          [keyName]: {
+            ...image,
+            imageHeight,
+          },
+          layoutHeight,
+          ratio: ratio,
+        })
       }
     },
-    [hasMouseDown.right, hasMouseDown.down],
+    [
+      hasMouseDown.right,
+      hasMouseDown.down,
+      hasMouseDown.both,
+      layoutRef,
+      layoutRef.current,
+    ],
   )
 
   useEffect(() => {
@@ -221,16 +283,13 @@ const Image = ({
 
   const { url, display } = image
 
-  const oddLength = length % 2
-  const isOdd = (i + 1) % 2
-  const isLast = i + 1 === length
-
   const sixMultiple = (i + 1) % 6 === 0
 
   const displayWidth =
-    (oddLength && isOdd && isLast && '100%') ||
-    (margins && 'calc(50% - 0.7rem)') ||
-    '50%'
+    image.imageWidth || (margins && 'calc(100% - 0.7rem)') || '100%'
+
+  const displayHeight = image.imageHeight || '300px'
+
   const displayMargin = margins ? '0.35rem' : 0
 
   const removedHeight =
@@ -247,11 +306,12 @@ const Image = ({
             : `linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${url})`
         }`,
         width: display ? displayWidth : '15%',
-        height: display ? '300px' : removedHeight,
+        height: display ? displayHeight : removedHeight,
         margin: display
           ? displayMargin
           : `0 ${sixMultiple ? '0' : '2%'} 1rem 0`,
         border: borders ? 'solid 1px hsl(0, 0%, 40%)' : 'none',
+        alignSelf: image.alignSelf,
       }}
       {...props}
     >
@@ -297,6 +357,10 @@ const Controllers = ({
       imgRef={imgRef}
       action={() => {
         imgRef.current.style.alignSelf = 'flex-start'
+        setImages({
+          ...images,
+          [keyName]: { ...image, alignSelf: 'flex-start' },
+        })
       }}
     />
 
@@ -315,6 +379,10 @@ const Controllers = ({
       imgRef={imgRef}
       action={() => {
         imgRef.current.style.alignSelf = 'flex-end'
+        setImages({
+          ...images,
+          [keyName]: { ...image, alignSelf: 'flex-end' },
+        })
       }}
     />
 
@@ -338,6 +406,20 @@ const AddButton = ({ length, ...props }) => (
     {...props}
   >
     + Ajouter une nouvelle image
+  </div>
+)
+
+const SaveButton = ({ length, ...props }) => (
+  <div
+    style={{
+      height: '35px',
+      marginTop: '10px',
+      opacity: length ? 1 : 0.3,
+    }}
+    className="button add-button"
+    {...props}
+  >
+    Enregistrer la composition
   </div>
 )
 
@@ -378,8 +460,9 @@ const Handler = ({ position, setHasMouseDown }) => (
     className={`handler handler-${position}`}
     onMouseDown={() => {
       setHasMouseDown({
-        right: position === 'right' || position === 'corner',
-        down: position === 'down' || position === 'corner',
+        both: position === 'corner',
+        right: position === 'right',
+        down: position === 'down',
       })
     }}
   >
@@ -413,30 +496,52 @@ export const LayoutRender = ({
   justification,
   margins,
   borders,
-  width,
+  layoutWidth,
   ...props
 }) => {
+  const layoutRef = useRef()
+
+  const [layout, setLayout] = useState({})
+
+  useEffect(() => {
+    if (!layoutRef || !layoutRef.current) return
+    setLayout({
+      width: layoutRef.current.getBoundingClientRect().width,
+      height: layoutRef.current.getBoundingClientRect().width / images.ratio,
+    })
+  }, [layoutRef, layoutRef.current, images])
+
+  if (!images) return null
+
   return (
     <div
       className="layout"
+      ref={layoutRef}
       style={{
         justifyContent: justification,
-        width: width,
+        width: layout.width,
+        height: layout.height,
       }}
     >
-      {Object.values(images).map((image, i) => (
-        <div
-          className={`image`}
-          style={{
-            background: `center / cover no-repeat ${`url(${image.url})`}`,
-            width: '50%',
-            height: '300px',
-            margin: margins ? '0.35rem' : 0,
-            border: borders ? 'solid 1px hsl(0, 0%, 40%)' : 'none',
-          }}
-          {...props}
-        />
-      ))}
+      {images &&
+        Object.values(images)
+          .filter(({ display }) => display)
+          .map(({ url, imageHeight, imageWidth, alignSelf }, i) => (
+            <div
+              key={i}
+              className={`image`}
+              style={{
+                background: `center / cover no-repeat ${`url(${url})`}`,
+                width: `${(imageWidth * layout.width) / images.layoutWidth}px`,
+                height: `${(imageHeight * layout.height) /
+                  images.layoutHeight}px`,
+                margin: margins ? '0.35rem' : 0,
+                border: borders ? 'solid 1px hsl(0, 0%, 40%)' : 'none',
+                alignSelf: alignSelf,
+              }}
+              {...props}
+            />
+          ))}
     </div>
   )
 }
