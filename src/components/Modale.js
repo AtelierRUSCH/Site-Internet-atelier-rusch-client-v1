@@ -54,7 +54,7 @@ const toHTML = {
       )),
   composition: ({ value }) => (
     <LayoutRender
-      layoutWidth="100%"
+      layoutWidth="50vw"
       images={value.images}
       justification={value.justification}
       borders={value.borders}

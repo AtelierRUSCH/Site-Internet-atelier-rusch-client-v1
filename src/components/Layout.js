@@ -35,6 +35,18 @@ export const Layout = ({
 
   const { length } = displayedImages
 
+  useEffect(() => {
+    const layout = layoutRef.current.getBoundingClientRect()
+    const layoutWidth = layout.width - 2
+    const layoutHeight = layout.height - 2
+    setImages({
+      ...images,
+      layoutWidth,
+      layoutHeight,
+      ratio: !length ? layoutWidth / 300 : layoutWidth / layoutHeight,
+    })
+  }, [length])
+
   return (
     <div
       style={{ width: width, marginTop: '10px', marginBottom: '40px' }}
@@ -82,7 +94,6 @@ export const Layout = ({
         onClick={() => {
           const layout = layoutRef.current.getBoundingClientRect()
           const layoutWidth = layout.width - 2
-          const layoutHeight = layout.height - 2
           setImages({
             ...images,
             [`img${totalLength}`]: {
@@ -92,11 +103,6 @@ export const Layout = ({
               imageWidth: layoutWidth,
               imageHeight: 300,
             },
-            layoutWidth,
-            layoutHeight: layoutHeight + 300,
-            ratio: !length
-              ? layoutWidth / 300
-              : layoutWidth / (layoutHeight + 300),
           })
         }}
       />
@@ -213,12 +219,10 @@ const Image = ({
       const layout = layoutRef.current.getBoundingClientRect()
       const layoutWidth = layout.width - 2
       const layoutHeight = layout.height - 2
+      const ratio = length && layoutWidth / layoutHeight
 
       const imageWidth = e.pageX - ref.current.getBoundingClientRect().left + 5
-
       const imageHeight = e.pageY - ref.current.getBoundingClientRect().top + 5
-
-      const ratio = (length && layoutWidth / layoutHeight) || 1
 
       if (hasMouseDown.both) {
         ref.current.style.width = imageWidth + 'px'
@@ -293,7 +297,9 @@ const Image = ({
   const displayMargin = margins ? '0.35rem' : 0
 
   const removedHeight =
-    !display && (15 / 100) * layoutRef.current.getBoundingClientRect().width
+    layoutRef.current &&
+    !display &&
+    (15 / 100) * layoutRef.current.getBoundingClientRect().width
 
   return (
     <div
@@ -519,7 +525,7 @@ export const LayoutRender = ({
       ref={layoutRef}
       style={{
         justifyContent: justification,
-        width: layout.width,
+        width: layoutWidth,
         height: layout.height,
       }}
     >
