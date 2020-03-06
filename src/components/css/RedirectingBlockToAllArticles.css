@@ -18,6 +18,7 @@
 img.arrowGif,
 .ModaleBlock img.arrowGif {
   width: 100px;
+  height: auto;
   text-align: center;
   align-self: center;
 }
