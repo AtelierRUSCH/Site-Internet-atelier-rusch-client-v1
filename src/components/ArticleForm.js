@@ -1,4 +1,4 @@
-import React, { Component, useState, Fragment } from 'react'
+import React, { Component, useState } from 'react'
 import Modale from './Modale.js'
 import { Container, Draggable } from 'react-smooth-dnd'
 import './css/ArticleForm.css'

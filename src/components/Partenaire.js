@@ -2,7 +2,7 @@ import React from 'react'
 import './css/Partenaire.css'
 
 const Partenaire = ({ partner }) => (
-  <a href={partner.url} target="_blank">
+  <a href={partner.url} target="_blank" rel="noopener noreferrer">
     <div className="PartenaireContainer">
       <div
         style={{ backgroundImage: `url(${partner.image})` }}
