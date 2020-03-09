@@ -30,12 +30,11 @@
 }
 
 .handler-corner {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   right: 0;
   bottom: 0;
   cursor: nwse-resize;
-  background: #fbd052;
 }
 
 .handler-down {
@@ -153,7 +152,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-svg {
+.icon {
   cursor: pointer;
 }
 
@@ -161,6 +160,6 @@ svg {
   transition: all 0.2s ease-in-out;
 }
 
-svg:hover .svg-path {
+.icon:hover .svg-path {
   stroke: #fbd052;
 }
