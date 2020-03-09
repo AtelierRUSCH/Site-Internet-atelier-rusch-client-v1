@@ -446,7 +446,7 @@ const UrlInput = props => (
 )
 
 const Icon = ({ up, down, close, action }) => (
-  <svg onClick={action} width="40px" viewBox="0 0 130 130">
+  <svg class="icon" onClick={action} width="40px" viewBox="0 0 130 130">
     <path
       fill="none"
       stroke="white"
@@ -472,9 +472,28 @@ const Handler = ({ position, setHasMouseDown }) => (
       })
     }}
   >
-    {[...Array(3)].map((e, i) => (
-      <div className={`handler-item-${position}`} key={`${position}-${i}`} />
-    ))}
+    {position === 'corner' ? (
+      <div className="handler-item-corner" key={position}>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          id="Layer_1"
+          data-name="Layer 1"
+          viewBox="0 0 100 100"
+          width="16px"
+        >
+          <path
+            d="M0 100L104-4M32.75 100l104-104M65.5 100l104-104"
+            fill="none"
+            stroke="#fbd052"
+            strokeWidth={8}
+          />
+        </svg>
+      </div>
+    ) : (
+      [...Array(3)].map((e, i) => (
+        <div className={`handler-item-${position}`} key={`${position}-${i}`} />
+      ))
+    )}
   </div>
 )
 
