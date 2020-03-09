@@ -103,6 +103,11 @@
   cursor: pointer;
   pointer-events: auto;
   color: white;
+  font-family: 'IBMPlex', monospace;
+}
+
+.put-back-button:hover {
+  color: #fbd052;
 }
 
 .layout-buttons {
