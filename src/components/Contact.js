@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Nav from './Nav.js'
 import Facebook from './img/fb.png'
 import Instagram from './img/instagram.png'

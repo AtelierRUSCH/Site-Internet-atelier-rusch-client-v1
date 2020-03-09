@@ -265,13 +265,7 @@ const Image = ({
         })
       }
     },
-    [
-      hasMouseDown.right,
-      hasMouseDown.down,
-      hasMouseDown.both,
-      layoutRef,
-      layoutRef.current,
-    ],
+    [hasMouseDown.right, hasMouseDown.down, hasMouseDown.both, layoutRef],
   )
 
   useEffect(() => {
@@ -534,7 +528,7 @@ export const LayoutRender = ({
       width: layoutRef.current.getBoundingClientRect().width,
       height: layoutRef.current.getBoundingClientRect().width / images.ratio,
     })
-  }, [layoutRef, layoutRef.current, images])
+  }, [layoutRef, images])
 
   if (!images) return null
 
