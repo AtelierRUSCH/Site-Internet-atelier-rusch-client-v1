@@ -59,6 +59,11 @@
   padding-top: 3rem;
 }
 
+.ModaleBlock iframe,
+.ModaleBlockPreview iframe {
+  min-height: 30vw;
+}
+
 .ModaleBlockPreview h2 {
   padding: 0;
   margin: 5rem 2rem 0 7rem;
