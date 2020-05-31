@@ -405,6 +405,12 @@
   }
 }
 
+@media all and (max-width: 800px) {
+  .ModaleBlock .quote {
+    padding: 3rem 9.5rem;
+  }
+}
+
 @media all and (max-width: 500px) {
   /* HOMEPAGE */
 
@@ -533,7 +539,7 @@
   }
 
   .ModaleBlock .quote {
-    padding: 1.5rem 15rem;
+    padding: 1.5rem 3rem;
   }
 
   .recapBlockFixed {
