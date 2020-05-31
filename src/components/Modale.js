@@ -132,7 +132,7 @@ const Modale = ({ article, setFullScreen }) => {
 
   const projectLink = (
     <a href={article.projectLink} target="_blank" rel="noopener noreferrer">
-      <p className="smallLink">Lien du projet</p>
+      <div className="smallLink">Lien du projet</div>
     </a>
   )
 
