@@ -289,7 +289,7 @@
   }
 
   .recapBlockFixed {
-    width: calc(100vw - 15rem);
+    width: calc(100vw);
     height: auto;
     padding: 3rem 5rem 3rem 10rem;
     margin: 0;
