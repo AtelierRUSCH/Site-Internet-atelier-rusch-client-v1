@@ -6,6 +6,13 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 3rem;
+  z-index: -1;
+}
+
+@media all and (max-width: 700px) {
+  .layout {
+    width: 75% !important;
+  }
 }
 
 .layout input {
@@ -15,8 +22,6 @@
 
 .image {
   position: relative;
-  min-width: 100px;
-  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
