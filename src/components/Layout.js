@@ -522,13 +522,25 @@ export const LayoutRender = ({
 
   const [layout, setLayout] = useState({})
 
+  const resize = useCallback(() => {
+    setLayout({
+      width: layoutRef.current.getBoundingClientRect().width,
+      height: layoutRef.current.getBoundingClientRect().width / images.ratio,
+    })
+  }, [layoutRef, images])
+
   useEffect(() => {
     if (!layoutRef || !layoutRef.current) return
     setLayout({
       width: layoutRef.current.getBoundingClientRect().width,
       height: layoutRef.current.getBoundingClientRect().width / images.ratio,
     })
-  }, [layoutRef, images])
+
+    window.addEventListener('resize', resize)
+    return () => {
+      window.removeEventListener('resize', () => resize)
+    }
+  }, [layoutRef, images, resize])
 
   if (!images) return null
 
@@ -545,22 +557,25 @@ export const LayoutRender = ({
       {images &&
         Object.values(images)
           .filter(({ display }) => display)
-          .map(({ url, imageHeight, imageWidth, alignSelf }, i) => (
-            <div
-              key={i}
-              className={`image`}
-              style={{
-                background: `center / cover no-repeat ${`url(${url})`}`,
-                width: `${(imageWidth * layout.width) / images.layoutWidth}px`,
-                height: `${(imageHeight * layout.height) /
-                  images.layoutHeight}px`,
-                margin: margins ? '0.35rem' : 0,
-                border: borders ? 'solid 1px hsl(0, 0%, 40%)' : 'none',
-                alignSelf: alignSelf,
-              }}
-              {...props}
-            />
-          ))}
+          .map(({ url, imageHeight, imageWidth, alignSelf }, i) => {
+            const percentageW = (100 * imageWidth) / images.layoutWidth
+            const percentageH = (100 * imageHeight) / images.layoutHeight
+            return (
+              <div
+                key={i}
+                className={`image`}
+                style={{
+                  background: `center / cover no-repeat ${`url(${url})`}`,
+                  width: `${percentageW}%`,
+                  height: `${percentageH}%`,
+                  margin: margins ? '0.35rem' : 0,
+                  border: borders ? 'solid 1px hsl(0, 0%, 40%)' : 'none',
+                  alignSelf: alignSelf,
+                }}
+                {...props}
+              />
+            )
+          })}
     </div>
   )
 }
