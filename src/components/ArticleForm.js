@@ -4,9 +4,7 @@ import { Container, Draggable } from 'react-smooth-dnd'
 import './css/ArticleForm.css'
 import { navigate } from '@reach/router'
 import store from '../store.js'
-import { Editor, EditorState, RichUtils } from 'draft-js'
-import { stateToHTML } from 'draft-js-export-html'
-import { stateFromHTML } from 'draft-js-import-html'
+import { TextEditor } from './Editor.js'
 import { Layout } from './Layout.js'
 
 const formatDate = () => {
@@ -53,74 +51,6 @@ const H2 = ({ element, children, ...rest }) => {
       />
     </div>
   )
-}
-
-class MyEditor extends React.Component {
-  constructor(props) {
-    super(props)
-    let contentState = stateFromHTML(props.element.value)
-    this.state = {
-      editorState: EditorState.createWithContent(contentState),
-      value: props.element.value,
-      name: props.name,
-    }
-    this.onChangeHandle = this.props.onChange.bind(this)
-    this.setDomEditorRef = ref => (this.domEditor = ref)
-  }
-
-  onChange = editorState => {
-    this.setState({
-      editorState,
-      value: stateToHTML(editorState.getCurrentContent()),
-    })
-    this.onChangeHandle({ name: this.state.name, value: this.state.value })
-  }
-
-  _onClick = e => {
-    e.preventDefault()
-    this.onChange(
-      RichUtils.toggleInlineStyle(this.state.editorState, e.target.name),
-    )
-  }
-
-  componentDidMount() {
-    this.domEditor.focus()
-  }
-
-  render() {
-    const styles = ['BOLD', 'ITALIC', 'UNDERLINE']
-    const buttons = styles.map(style => {
-      return (
-        <button
-          className={`draftBtn ${style.toLowerCase()}`}
-          key={style}
-          onClick={this._onClick}
-          name={style}
-        >
-          {style.slice(0, 1)}
-        </button>
-      )
-    })
-    return (
-      <div style={{ flexDirection: 'column' }} className="draggableElement">
-        <div className="labelContainer">
-          <label className="moveCursor">Ajouter un paragraphe :</label>
-          {this.props.children}
-        </div>
-        <div className="field">
-          <div className="text-editor-toolbar">{buttons}</div>
-          <Editor
-            editorState={this.state.editorState}
-            onChange={this.onChange}
-            value={this.state.value}
-            {...this.props.rest}
-            autoFocus
-            ref={this.setDomEditorRef}
-          />
-        </div>
-      </div>
-    )
-  }
 }
 
 const Blockquote = ({ element, children, ...rest }) => {
