@@ -43,6 +43,16 @@
   margin: 2rem 7rem;
 }
 
+.ModaleBlock .contentBlock a,
+.ModaleBlock .contentBlock a *,
+.ModaleBlockPreview .contentBlock a,
+.ModaleBlockPreview .contentBlock a * {
+  font-family: 'HeimatMono', monospace;
+  color: #fbd052;
+  padding-bottom: 1px;
+  border-bottom: solid 1px #fbd052;
+}
+
 .ModaleBlock h4 {
   margin: 0 7rem;
 }

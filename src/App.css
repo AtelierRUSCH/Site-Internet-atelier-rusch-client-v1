@@ -50,13 +50,7 @@ a {
   margin-top: 5rem;
 }
 
-/* TYPEFACES
-  font-face & font-weight
-
-  https://developer.mozilla.org/fr/docs/Web/CSS/font-weight
-  https://stackoverflow.com/a/28339483
-  https://www.456bereastreet.com/archive/201012/font-face_tip_define_font-weight_and_font-style_to_keep_your_css_simple/
-*/
+/* TYPEFACES */
 
 @font-face {
   font-family: 'HeimatMono';
