@@ -190,14 +190,14 @@ const Composition = ({
 }
 
 const toInput = {
-  h2: props => <H2 {...props} />,
-  p: props => <MyEditor {...props} />,
-  blockquote: props => <Blockquote {...props} />,
-  caption: props => <Caption {...props} />,
-  abstract: props => <Abstract {...props} />,
-  imgs: props => <Imgs {...props} />,
-  video: props => <Video {...props} />,
-  composition: props => <Composition {...props} />,
+  h2: (props) => <H2 {...props} />,
+  p: (props) => <TextEditor {...props} />,
+  blockquote: (props) => <Blockquote {...props} />,
+  caption: (props) => <Caption {...props} />,
+  abstract: (props) => <Abstract {...props} />,
+  imgs: (props) => <Imgs {...props} />,
+  video: (props) => <Video {...props} />,
+  composition: (props) => <Composition {...props} />,
 }
 
 const Element = props => toInput[props.element.type](props)
