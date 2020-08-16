@@ -59,13 +59,13 @@ class App extends Component {
       <div className="App">
         <Router>
           <Homepage path="/" />
-          <Atelier path="atelier" />
-          <Projets path="projets" />
-          <Projets path="projets/:articleId" />
-          <LabRusch path="lab" />
-          <LabRusch path="lab/:articleId" />
-          <Contact path="contact" />
-          <Admin path="admin/*" />
+          <Atelier path="/atelier" />
+          <Projets path="/projets" />
+          <Projets path="/projets/:articleId" />
+          <LabRusch path="/lab" />
+          <LabRusch path="/lab/:articleId" />
+          <Contact path="/contact" />
+          <Admin path="/admin/*" />
         </Router>
         <Footer />
       </div>
