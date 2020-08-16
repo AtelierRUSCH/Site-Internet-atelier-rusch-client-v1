@@ -21,6 +21,7 @@ const freshArticle = {
   date: formatDate(),
   client: '',
   place: '',
+  district: '',
   type: '',
   shortDescription: '',
   projectLink: '',
@@ -200,7 +201,7 @@ const toInput = {
   composition: (props) => <Composition {...props} />,
 }
 
-const Element = props => toInput[props.element.type](props)
+const Element = (props) => toInput[props.element.type](props)
 
 const moveElement = (array, fromIndex, toIndex) => {
   const elem = array[fromIndex]
@@ -262,7 +263,7 @@ class ArticleForm extends Component {
       if (this.state.article.tags.includes(value)) {
         article = {
           ...this.state.article,
-          tags: this.state.article.tags.filter(tag => tag !== value),
+          tags: this.state.article.tags.filter((tag) => tag !== value),
         }
       } else {
         article = {
@@ -275,7 +276,7 @@ class ArticleForm extends Component {
         article = {
           ...this.state.article,
           partners: this.state.article.partners.filter(
-            partner => partner !== value,
+            (partner) => partner !== value,
           ),
         }
       } else {
@@ -293,7 +294,7 @@ class ArticleForm extends Component {
     this.setState({ article, errorPost: '' })
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault()
     if (this.state.article.title === '') {
       this.setState({ errorPost: '* Il faut renseigner un titre !' })
@@ -322,7 +323,7 @@ class ArticleForm extends Component {
     }
   }
 
-  addInput = type => {
+  addInput = (type) => {
     const basicContentElement = {
       h2: { type: 'h2', value: '' },
       p: { type: 'p', value: '' },
@@ -341,11 +342,11 @@ class ArticleForm extends Component {
     this.setState({ article })
   }
 
-  removeInput = i => {
+  removeInput = (i) => {
     const article = {
       ...this.state.article,
       content: this.state.article.content.filter(
-        index => index !== this.state.article.content[i],
+        (index) => index !== this.state.article.content[i],
       ),
     }
     this.setState({ article })
@@ -385,7 +386,7 @@ class ArticleForm extends Component {
           name={`content-${i}`}
           element={element}
           i={i}
-          onChange={event =>
+          onChange={(event) =>
             event.name
               ? this.handleChange(event.name, event.value)
               : this.handleChange(event.target.name, event.target.value)
@@ -407,8 +408,8 @@ class ArticleForm extends Component {
     const articles = state.articles.allArticles
 
     const articlesToSuggest = articles
-      .filter(a => a.id !== article.id)
-      .filter(a => a.isDraft === '0')
+      .filter((a) => a.id !== article.id)
+      .filter((a) => a.isDraft === '0')
 
     const TagCard = ({ tag }) => (
       <button
@@ -421,7 +422,7 @@ class ArticleForm extends Component {
             : 'TagCard'
         }
         value={tag.filterTag}
-        onClick={event =>
+        onClick={(event) =>
           this.handleChange(event.target.name, event.target.value)
         }
       >
@@ -430,8 +431,8 @@ class ArticleForm extends Component {
     )
 
     const TagCards = state.filters.allFilters
-      .filter(tag => this.state.article.section === tag.section)
-      .map(tag => <TagCard key={tag.id} tag={tag} />)
+      .filter((tag) => this.state.article.section === tag.section)
+      .map((tag) => <TagCard key={tag.id} tag={tag} />)
 
     const PartnerCard = ({ partner }) => (
       <button
@@ -444,7 +445,7 @@ class ArticleForm extends Component {
             : 'TagCard'
         }
         value={partner.name}
-        onClick={event =>
+        onClick={(event) =>
           this.handleChange(event.target.name, event.target.value)
         }
       >
@@ -452,7 +453,7 @@ class ArticleForm extends Component {
       </button>
     )
 
-    const PartnersCards = state.partners.allPartners.map(partner => (
+    const PartnersCards = state.partners.allPartners.map((partner) => (
       <PartnerCard key={partner.id} partner={partner} />
     ))
 
@@ -469,7 +470,7 @@ class ArticleForm extends Component {
                     type="text"
                     name="title"
                     value={article.title}
-                    onChange={event =>
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   />
@@ -480,7 +481,7 @@ class ArticleForm extends Component {
                     type="date"
                     name="date"
                     value={article.date}
-                    onChange={event =>
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   />
@@ -491,7 +492,7 @@ class ArticleForm extends Component {
                     type="text"
                     name="client"
                     value={article.client}
-                    onChange={event =>
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   />
@@ -502,7 +503,18 @@ class ArticleForm extends Component {
                     type="text"
                     name="place"
                     value={article.place}
-                    onChange={event =>
+                    onChange={(event) =>
+                      this.handleChange(event.target.name, event.target.value)
+                    }
+                  />
+                </label>
+                <label>
+                  Quartier :<br />
+                  <input
+                    type="text"
+                    name="district"
+                    value={article.district}
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   />
@@ -513,7 +525,7 @@ class ArticleForm extends Component {
                     type="text"
                     name="type"
                     value={article.type}
-                    onChange={event =>
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   />
@@ -524,7 +536,7 @@ class ArticleForm extends Component {
                     type="text"
                     name="shortDescription"
                     value={article.shortDescription}
-                    onChange={event =>
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   />
@@ -535,7 +547,7 @@ class ArticleForm extends Component {
                     type="text"
                     name="projectLink"
                     value={article.projectLink}
-                    onChange={event =>
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   />
@@ -547,7 +559,7 @@ class ArticleForm extends Component {
                     type="text"
                     name="headerImage"
                     value={article.headerImage}
-                    onChange={event =>
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   />
@@ -558,7 +570,7 @@ class ArticleForm extends Component {
                     <select
                       name="section"
                       value={article.section}
-                      onChange={event =>
+                      onChange={(event) =>
                         this.handleChange(event.target.name, event.target.value)
                       }
                     >
@@ -583,12 +595,12 @@ class ArticleForm extends Component {
                   <select
                     name="suggestion"
                     value={article.suggestion || undefined}
-                    onChange={event =>
+                    onChange={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   >
                     <option value={0}>Choisissez un article :</option>
-                    {articlesToSuggest.map(a => (
+                    {articlesToSuggest.map((a) => (
                       <option key={a.id} value={a.id}>
                         {a.title}
                       </option>
@@ -611,7 +623,7 @@ class ArticleForm extends Component {
                     }}
                     type="button"
                     name="hasImage"
-                    onClick={event =>
+                    onClick={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   >
@@ -633,7 +645,7 @@ class ArticleForm extends Component {
                     }}
                     type="button"
                     name="hasStar"
-                    onClick={event =>
+                    onClick={(event) =>
                       this.handleChange(event.target.name, event.target.value)
                     }
                   >
