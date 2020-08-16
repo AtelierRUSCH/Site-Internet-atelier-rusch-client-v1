@@ -8,7 +8,7 @@ import ArticleThumbnail from './ArticleThumbnail.js'
 import RedirectingBlockToAllArticles from './RedirectingBlockToAllArticles.js'
 import ReactHtmlParser from 'react-html-parser'
 
-const generateValidUrl = value => {
+const generateValidUrl = (value) => {
   // for vimeo videos
   if (value.includes('vimeo')) {
     const vimeoId = value.split('/').slice(-1)
@@ -80,7 +80,7 @@ const Modale = ({ article, setFullScreen }) => {
 
   const parentContextPath = window.location.pathname.replace(/\/\d+$/, '')
 
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     let keyCode = e.keyCode
     if (keyCode === 27) {
       setFullScreen ? setFullScreen() : navigate(parentContextPath)
@@ -93,23 +93,25 @@ const Modale = ({ article, setFullScreen }) => {
 
   const getSection = parentContextPath.slice(1, parentContextPath.length)
 
-  const articleSuggestedChosen = articles.find(a => a.id === article.suggestion)
+  const articleSuggestedChosen = articles.find(
+    (a) => a.id === article.suggestion,
+  )
 
   const articlesSuggested = articles
-    .filter(a => a.id !== article.id)
-    .filter(a => a.isDraft === '0')
-    .filter(a => a.section === getSection)
+    .filter((a) => a.id !== article.id)
+    .filter((a) => a.isDraft === '0')
+    .filter((a) => a.section === getSection)
 
   const articleSuggestions = articleSuggestedChosen
     ? [articleSuggestedChosen, ...articlesSuggested.slice(0, 1)]
     : articlesSuggested.slice(0, 2)
 
-  const getPartners = array =>
+  const getPartners = (array) =>
     state.partners.allPartners.filter(
-      el => el.name === array.find(elem => elem === el.name),
+      (el) => el.name === array.find((elem) => elem === el.name),
     )
 
-  const partners = getPartners(article.partners).map(partner => (
+  const partners = getPartners(article.partners).map((partner) => (
     <Partenaire key={partner.id} partner={partner} />
   ))
 
@@ -170,6 +172,11 @@ const Modale = ({ article, setFullScreen }) => {
           {article.place && (
             <h6 style={{ marginTop: '1rem' }}>
               <u>Lieu</u> : {article.place}
+            </h6>
+          )}
+          {article.district && (
+            <h6 style={{ marginTop: '1rem' }}>
+              <u>Quartier</u> : {article.district}
             </h6>
           )}
           {article.type && (
