@@ -43,10 +43,10 @@
   margin: 2rem 7rem;
 }
 
-.ModaleBlock .contentBlock a,
-.ModaleBlock .contentBlock a *,
-.ModaleBlockPreview .contentBlock a,
-.ModaleBlockPreview .contentBlock a * {
+.ModaleBlock .contentBlock .textContent a,
+.ModaleBlock .contentBlock .textContent a *,
+.ModaleBlockPreview .contentBlock .textContent a,
+.ModaleBlockPreview .contentBlock .textContent a * {
   font-family: 'HeimatMono', monospace;
   color: #fbd052;
   padding-bottom: 1px;
