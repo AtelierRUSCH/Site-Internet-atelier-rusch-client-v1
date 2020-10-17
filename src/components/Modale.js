@@ -192,6 +192,7 @@ const Modale = ({ article, setFullScreen }) => {
               flexDirection: 'column',
               alignItems: 'center',
             }}
+            className="textContent"
           >
             {content}
           </div>
