@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { navigate } from '@reach/router'
 import Nav from './Nav.js'
 import ArticleThumbnail from './ArticleThumbnail.js'
 import FiltersSection from './FiltersSection.js'
@@ -11,21 +12,32 @@ const LabRusch = (props) => {
   const state = store.getState()
   const articles = state.articles.allArticles
   const articleId = props.articleId
-  const selectedArticle = articles.find(article => String(article.id) === articleId)
-  const modale = selectedArticle !== undefined
-    ? <div className='ModaleBlock'><Modale article={selectedArticle} displayModale={'block'} /></div>
-    : ''
+  const selectedArticle = articles.find(
+    (article) => String(article.id) === articleId,
+  )
+
+  useEffect(() => {
+    if (articles.length && articleId && !selectedArticle) {
+      navigate('/lab')
+    }
+  }, [articles])
+
+  const modale = selectedArticle && (
+    <div className="ModaleBlock">
+      <Modale article={selectedArticle} displayModale={'block'} />
+    </div>
+  )
 
   const getFilteredArticles = applyFiltersToSection('lab', state)
 
-  const filteredLabArticleThumbnails = getFilteredArticles
-    .map((article, index) =>
-      <ArticleThumbnail
-        key={article.id}
-        article={article}
-        index={index}/>)
+  const filteredLabArticleThumbnails = getFilteredArticles.map(
+    (article, index) => (
+      <ArticleThumbnail key={article.id} article={article} index={index} />
+    ),
+  )
 
-  document.body.style.overflow = selectedArticle !== undefined ? 'hidden hidden' : 'hidden scroll'
+  document.body.style.overflow =
+    selectedArticle !== undefined ? 'hidden hidden' : 'hidden scroll'
 
   return (
     <div>
@@ -35,11 +47,10 @@ const LabRusch = (props) => {
 
       <div className="ArticlesBlock">
         <SectionTitleBlock message="Plein d'articles super intéressants sur des sujets super intéressants" />
-        { filteredLabArticleThumbnails }
+        {filteredLabArticleThumbnails}
       </div>
 
       {modale}
-
     </div>
   )
 }
