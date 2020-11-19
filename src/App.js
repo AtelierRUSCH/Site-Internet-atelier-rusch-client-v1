@@ -58,7 +58,7 @@ class App extends Component {
     return (
       <div className="App">
         <Router>
-          <Homepage path="/" />
+          <Homepage path="/" default />
           <Atelier path="/atelier" />
           <Projets path="/projets" />
           <Projets path="/projets/:articleId" />
