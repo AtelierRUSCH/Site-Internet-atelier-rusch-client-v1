@@ -1,4 +1,4 @@
-const defaultUrl = 'http://localhost:5000'
+const defaultUrl = 'http://localhost:5010'
 const hostUrl = process.env.REACT_APP_API_URL || defaultUrl
 if (!process.env.REACT_APP_API_URL) {
   console.warn(
