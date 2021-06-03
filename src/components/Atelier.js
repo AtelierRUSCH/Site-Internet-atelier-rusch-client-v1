@@ -106,7 +106,7 @@ const Atelier = () => {
 
       <AtelierSection title={'Notre équipe'} bgColor="white">
         <div className="EquipeMembersContainer">
-          {state?.members?.allMembers.length && (
+          {state?.members?.allMembers.length > 0 && (
             <Fragment>
               <EquipeMember
                 key="Michael Schnell"
