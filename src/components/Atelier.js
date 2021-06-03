@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Nav from './Nav.js'
 import './css/Atelier.css'
 import './css/Equipe.css'
@@ -14,7 +14,10 @@ const Atelier = () => {
 
   const state = store.getState()
 
-  const members = state.members.allMembers.map(member => <EquipeMember key={member.id} member={member} />)
+  const members = state.members.allMembers
+    .filter((m) => m.name !== 'Michael Schnell' && m.name !== 'Marie Demée')
+    .sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt))
+    .map((member) => <EquipeMember key={member.id} member={member} />)
 
   const partners = state.partners.allPartners.map(partner => <Partenaire key={partner.id} partner={partner} />)
 
@@ -59,6 +62,22 @@ const Atelier = () => {
 
       <AtelierSection title={'Notre équipe'} bgColor="white">
         <div className="EquipeMembersContainer">
+          {state?.members?.allMembers.length && (
+            <Fragment>
+              <EquipeMember
+                key="Michael Schnell"
+                member={state?.members?.allMembers.find(
+                  (m) => m.name === 'Michael Schnell',
+                )}
+              />
+              <EquipeMember
+                key="Marie Demée"
+                member={state?.members?.allMembers.find(
+                  (m) => m.name === 'Marie Demée',
+                )}
+              />
+            </Fragment>
+          )}
           {members}
           <div className="memberContainer prevMembersContainer bgWhite p3vw">
             <div className="thxText">Et merci à tous ceux qui sont passés et passent encore par chez nous !</div>
